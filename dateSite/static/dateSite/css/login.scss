@@ -1,0 +1,1044 @@
+@import "public.scss";
+
+$world-members-color: rgb(91, 23, 164);
+$online-members-color: rgb(154, 227, 40);
+$men-members-color: rgb(21, 201, 246);
+$women-members-color: rgb(250, 13, 123);
+
+@include media-breakpoint-up(xs) {
+    .home-title{
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 0.4rem 0px;
+        color: $font-third-color;
+        width: 100%;
+    }
+    //** GOOD LUCK **//
+    .container-goodluck{
+        padding: 0px;
+        .container{
+            padding: 0px;
+            max-width: 100%;
+            .goodluck{
+                width: 100%;
+                background: url('../img/main_image.jpg') no-repeat top right;
+                background-size: 100% 150px;
+                height: 155px;
+                position: relative;
+                box-sizing: border-box;
+            }
+            .goodluckform{
+                display: none;
+                position: fixed;
+                bottom: 0px;
+                left: 2%;
+                width: 96%;
+                padding: 10% 5% 5%;
+                margin: 0px;
+                box-sizing: border-box;
+                z-index: 5;
+                background-color: rgba(200, 200, 200, 0.9);
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                text-align: center;
+                .search-arrow-down{
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    display: block;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .control-label{
+                    width: 100%;
+                    color: black;
+                    text-align: center;
+                    margin-bottom: 0.3rem;
+                    @include label-text-xs;
+                }
+                .select{
+                    width: 99%;
+                    margin: 0px 0px 0px 1%;
+                    box-sizing: border-box;
+                    color: $font-third-color;
+                    border: 1px solid $secondary-color;
+                    @include control-text-xs;
+                    @include border-radius(5px);
+                }
+                .controls-age{
+                    width: 100%;
+                    box-sizing: border-box;
+                    margin: 0px 0px 15px 0px;
+                    padding: 0px;
+                    .control-group{
+                        width: 48%;
+                        display: inline-block;
+                        .controls{
+                            width: 100%;
+                            display: inline-block;
+                            .input-age{
+                                width: 99%;
+                                margin: 0px 0px 0px 1%;
+                                box-sizing: border-box;
+                                color: $font-third-color;
+                                border: 1px solid $secondary-color;
+                                @include control-text-xs;
+                                @include border-radius(5px);
+                            }
+                        }
+                    }
+                }
+                .btn-primary{
+                    width: 80%;
+                    text-align: center;
+                    font-weight: 600;
+                }
+            }
+            .search-label{
+                display: block;
+                position: fixed;
+                bottom: 0px;
+                width: 80%;
+                margin: 0px 10%;
+                background: $primary-color url('../img/icons/search-icon.png') 10px 8px no-repeat;
+                background-size: 10% 55%;
+                color: $font-primary-color;
+                padding: 10px 10px 10px 50px;
+                box-sizing: border-box;
+                z-index: 10;
+                text-align: left;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                font-size: 0.9rem;
+                font-weight: bold;
+                .search-arrow-up{
+                    width: 20px;
+                    height: 25px;
+                    position: absolute;
+                    top: 10px;
+                    right: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    //** FIN DE GOOD LUCK **//
+    //** JOIN TODAY**//
+    .container-joinus{
+        margin-bottom: 15px;
+    }
+    .latest-members{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        li{
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            .itemimage{
+                width: 90%;
+                @include border-radius(50%);
+                margin: 0px 5%;
+            }
+            .itemname{
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                line-height: 1.2rem;
+                height: 1.4rem;
+                font-weight: bold;
+                display: block;
+                color: $font-third-color;
+                margin: 5px 0px 0px;
+                overflow: hidden;
+            }
+            .itemdetail{
+                width: 100%;
+                text-align: center;
+                font-size: 0.7rem;
+                line-height: 0.9rem;
+                height: 1rem;
+                font-weight: bold;
+                display: block;
+                color: $font-third-color;
+                margin: 3px 0px 0px;
+                overflow: hidden;
+            }
+            .button-profile{
+                width: 96%;
+                display: block;
+                margin: 10px 2% 20px;
+                text-align: center;
+                font-size: 0.9rem;
+                padding: 0.4rem 0.6rem;
+            }
+        }
+    }
+    //** FIN DE JOIN TODAY **//
+    //** STADISTICS **//
+    .container-stadistics{
+        margin-bottom: 15px;
+        .totalmembers{
+            width: 100%;
+            box-sizing: border-box;
+            background-color: $world-members-color;
+            background-image:  url('../img/total-members-icon.png');
+            background-repeat: no-repeat;
+            background-position: center 10px;
+            background-size: 40px 40px;
+            padding-top: 60px;
+            height: auto;
+            overflow: hidden;
+        }
+        .onlinemembers{
+            width: 100%;
+            box-sizing: border-box;
+            background-color: $online-members-color;
+            background-image:  url('../img/online-members-icon.png');
+            background-repeat: no-repeat;
+            background-position: center 10px;
+            background-size: 40px 40px;
+            padding-top: 60px;
+            height: auto;
+            overflow: hidden;
+        }
+        .menmembers{
+            width: 100%;
+            box-sizing: border-box;
+            background-color: $men-members-color;
+            background-image:  url('../img/men-members-icon.png');
+            background-repeat: no-repeat;
+            background-position: center 10px;
+            background-size: 30px 40px;
+            padding-top: 60px;
+            height: auto;
+            overflow: hidden;
+        }
+        .womenmembers{
+            width: 100%;
+            box-sizing: border-box;
+            background-color: $women-members-color;
+            background-image:  url('../img/women-members-icon.png');
+            background-repeat: no-repeat;
+            background-position: center 10px;
+            background-size: 30px 40px;
+            padding-top: 60px;
+            height: auto;
+            overflow: hidden;
+        }
+        h3{
+            color: $font-primary-color;
+            text-align: center;
+            width: 100%;
+            font-size: 1.2rem;
+            box-sizing: border-box;
+            padding: 0px 10px 15px;
+            margin: 0px;
+        }
+        h6{
+            color: $font-primary-color;
+            text-align: center;
+            font-size: 0.65rem;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px 10px;
+            margin: 0px;
+        }
+    }
+    //** FIN DE STADISTICS **//
+    //** LOVE STORIES **//
+    .container-love{
+        .itemslove{
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            .itemimage{
+                width: 80%;
+                @include border-radius(50%);
+                box-sizing: border-box;
+                height: auto;
+                margin: 0px 10%;
+            }
+            .itemcomment{
+                display: block;
+                width: 100%;
+                height: auto;
+                box-sizing: border-box;
+                background: url('../img/left-quotation-marks.png') no-repeat top left;
+                background-size: 8% auto;
+                padding: 0px 12px 0px 8%;
+                font-size: 0.8rem;
+                line-height: 1.1rem;
+                margin-top: 10px;
+                text-align: justify;
+                .itemname{
+                    width: 100%;
+                    text-align: right;
+                    font-size: 1em;
+                    font-weight: bold;
+                    display: block;
+                    color: $font-third-color;
+                    margin: 5px;
+                }
+            }
+        }
+        .items-circles{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+            .circle{
+                background-color: $secondary-color;
+                @include border-radius(50%);
+                width: 15px;
+                height: 15px;
+                margin-right: 10px;
+            }
+            .circle-active{
+                background-color: $primary-color;
+            }
+        }
+    }
+    //** FIN DE LOVE STORIES**//
+}
+@include media-breakpoint-up(sm) {
+    .container-goodluck{
+        padding: 0px;
+        .container{
+            padding: 0px;
+            max-width: 100%;
+            .goodluck{
+                width: 100%;
+                background: url('../img/main_image.jpg') no-repeat top right;
+                background-size: 100% 205px;
+                height: 205px;
+                position: relative;
+                box-sizing: border-box;
+            }
+            .goodluckform{
+                position: fixed;
+                bottom: 0px;
+                left: 2%;
+                width: 96%;
+                padding: 10% 5% 5%;
+                margin: 0px;
+                box-sizing: border-box;
+                z-index: 5;
+                background-color: rgba(200, 200, 200, 0.9);
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                display: none;
+                .search-arrow-down{
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    display: block;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .control-label{
+                    width: 100%;
+                    font-size: 1rem;
+                    color: black;
+                    padding: 0.2rem;
+                    line-height: 2rem;
+                    height: 2.2rem;
+                    text-align: center;
+                    margin-bottom: 0.5rem;
+                }
+                .select{
+                    width: 96%;
+                    margin: 0px 0px 0px 1%;
+                    box-sizing: border-box;
+                    color: $font-third-color;
+                    border: 1px solid $secondary-color;
+                    @include control-text-sm;
+                    @include border-radius(5px);
+                }
+                .controls-age{
+                    width: 100%;
+                    box-sizing: border-box;
+                    margin: 0px 0px 15px 0px;
+                    padding: 0px;
+                    .control-group{
+                        width: 48%;
+                        display: inline-block;
+                        .controls{
+                            width: 100%;
+                            display: inline-block;
+                            .input-age{
+                                width: 99%;
+                                margin: 0px 0px 0px 1%;
+                                box-sizing: border-box;
+                                @include control-text-sm;
+                                @include border-radius(5px);
+                                color: $font-third-color;
+                                border: 1px solid $secondary-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .search-label{
+                position: fixed;
+                bottom: 0px;
+                width: 80%;
+                margin: 0px 10%;
+                background: $primary-color url('../img/icons/search-icon.png') 10px 8px no-repeat;
+                background-size: 6% 55%;
+                color: $font-primary-color;
+                padding: 10px 10px 10px 50px;
+                box-sizing: border-box;
+                z-index: 10;
+                text-align: left;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                font-size: 0.9rem;
+                font-weight: bold;
+                display: block;
+                .search-arrow-up{
+                    width: 20px;
+                    height: 25px;
+                    position: absolute;
+                    top: 10px;
+                    right: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .latest-members{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        li{
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            .itemimage{
+                width: 50%;
+                @include border-radius(50%);
+                margin: 0px 25%;
+            }
+            .itemname{
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                line-height: 1.2rem;
+                height: 1.4rem;
+                font-weight: bold;
+                display: block;
+                color: $font-third-color;
+                margin: 5px 0px 0px;
+                overflow: hidden;
+            }
+            .itemdetail{
+                width: 100%;
+                text-align: center;
+                font-size: 0.7rem;
+                line-height: 0.9rem;
+                height: 1rem;
+                font-weight: bold;
+                display: block;
+                color: $font-third-color;
+                margin: 3px 0px 0px;
+                overflow: hidden;
+            }
+            .button-profile{
+                width: 60%;
+                display: block;
+                margin: 10px 20% 20px;
+                text-align: center;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(md) {
+    .home-title{
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 0.4rem 0px;
+        color: $font-third-color;
+        width: 100%;
+    }
+    //** GOOD LUCK **//
+    .container-goodluck{
+        padding: 5px 15px 5px;
+        .container{
+            padding: 0px;
+            max-width: 720px;
+            .goodluck{
+                width: 100%;
+                background: url('../img/main_image.jpg') no-repeat top right;
+                background-size: 100% 100%;
+                height: 250px;
+                padding-top: 0px;
+                position: relative;
+                .goodluckform{
+                    padding: 10px;
+                    margin: 8px;
+                    width: 45%;
+                    background-color: $third-color-alpha;
+                    border: 1px solid $third-color-alpha;
+                    border-radius: 15px;
+                    color: $font-primary-color;
+                    position: relative;
+                    left: 0px;
+                    display: block;
+                    text-align: center;
+                    .control-label{
+                        width: 100%;
+                        font-size: 0.9rem;
+                        color: $font-primary-color;
+                        padding: 0.2rem;
+                        line-height: 1.3rem;
+                        height: 1.6rem;
+                        text-align: center;
+                        margin-bottom: 0.3rem;
+                    }
+                    .select{
+                        width: 99%;
+                        margin: 0px 0px 0px 1%;
+                        box-sizing: border-box;
+                        padding: 0.3rem;
+                        font-size: 0.6rem;
+                        line-height: 1rem;
+                        height: 1.6rem;
+                        color: $font-third-color;
+                        border: 1px solid $secondary-color;
+                        border-radius: 5px;
+                    }
+                    .controls-age{
+                        width: 100%;
+                        box-sizing: border-box;
+                        margin: 0px 0px 15px 0px;
+                        padding: 0px;
+                        .control-group{
+                            width: 48%;
+                            display: inline-block;
+                            .controls{
+                                width: 100%;
+                                display: inline-block;
+                                .input-age{
+                                    width: 99%;
+                                    margin: 0px 0px 0px 1%;
+                                    box-sizing: border-box;
+                                    padding: 0.3rem;
+                                    font-size: 0.7rem;
+                                    line-height: 1.4rem;
+                                    height: 1.6rem;
+                                    color: $font-third-color;
+                                    border: 1px solid $secondary-color;
+                                    border-radius: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .search-label, .search-arrow-down{
+                    display: none;
+                }
+            }
+        }
+    }
+    //** FIN DE GOOD LUCK **//
+    //** JOIN TODAY**//
+    .quotation-marks {
+        img{
+            width: 70%;
+            margin: 0px 15%;
+        }
+    }
+    .arrow{
+        img{
+            width: 70%;
+            margin: 80% 15% 0px;
+            cursor: pointer;
+        }
+    }
+    .text-comment{
+        font-size: 0.6rem;
+        line-height: 0.9rem;
+        text-align: center;
+        height: 2.7rem;
+    }
+    .itemcomment{
+        display: none;
+    }
+    .people{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        height: 140px;
+        .itemstestimonials{
+            margin: 0px;
+            width: calc(100% / 6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            .itemimage{
+                width: 50%;
+                border-radius: 50%;
+                margin: 0px 25%;
+            }
+            .itemname{
+                width: 100%;
+                text-align: center;
+                font-size: 0.7rem;
+                line-height: 0.8rem;
+                height: 0.8rem;
+                font-weight: bold;
+                display: inline-block;
+                color: $font-third-color;
+                margin-bottom: 10px;
+                display: none;
+                overflow: hidden;
+            }
+        }
+    }
+    //** FIN DE JOIN TODAY **//
+    //** STADISTICS **//
+    @mixin arrow-stadistics {
+        width: 100%;
+        height: 55px;
+        box-sizing: border-box;
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-color: transparent;
+        padding: 0px;
+    }
+    .container-stadistics{
+        margin-bottom: 15px;
+        .totalmembers{
+            @include arrow-stadistics;
+            background-image: url('../img/total-members.png');
+        }
+        .onlinemembers{
+            @include arrow-stadistics;
+            background-image: url('../img/online-members.png');
+        }
+        .menmembers{
+            @include arrow-stadistics;
+            background-image: url('../img/men-members.png');
+        }
+        .womenmembers{
+            @include arrow-stadistics;
+            background-image: url('../img/women-members.png');
+        }
+        h3{
+            color: $font-primary-color;
+            text-align: left;
+            width: 80%;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            padding: 3px 0px 10px 0px;
+            margin: 0px 0px 0px 20%;
+        }
+        h6{
+            color: $font-primary-color;
+            text-align: left;
+            width: 80%;
+            font-size: 0.6rem;
+            box-sizing: border-box;
+            padding: 3px 0px 0px 0px;
+            margin: 0px 0px 0px 20%;
+        }
+    }
+    //** FIN DE STADISTICS **//
+    //** LOVE STORIES **//
+    .container-love{
+        .itemslove:nth-child(1n+2){
+            display: block;
+        }
+        .itemimage{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0px 5px;
+            height: auto;
+            margin: 0px;
+        }
+        .itemcomment{
+            display: block;
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+            background: url('../img/left-quotation-marks.png') no-repeat top left;
+            background-size: 8% auto;
+            padding: 0px 12px 0px 8%;
+            font-size: 0.6rem;
+            line-height: 1rem;
+            margin-top: 10px;
+            text-align: justify;
+            .itemname{
+                width: 100%;
+                text-align: right;
+                font-size: 1em;
+                font-weight: bold;
+                display: block;
+                color: $font-third-color;
+                margin: 5px;
+            }
+        }
+    }
+    //** FIN DE LOVE STORIES**//
+    //** CERTIFICATE **/
+    .container-certificate{
+        margin-bottom: 15px;
+        .textcertificate{
+            width: 100%;
+            padding: 0px 10%;
+            text-align: justify;
+            box-sizing: border-box;
+            font-size: 0.8rem;
+        }
+        .itemimagecertificate{
+            width: 50%;
+            height: auto;
+            margin: 0px 25%;
+        }
+        .list-certificate{
+            list-style: none;
+        }
+    }
+    //** FIN DE CERTIFICATE **//
+}
+@include media-breakpoint-up(lg) {
+    .home-title{
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 0.4rem 0px;
+        color: $font-third-color;
+        width: 100%;
+    }
+    //** GOOD LUCK **//
+    .container-goodluck{
+        padding: 5px 15px 5px;
+        .container{
+            padding: 0px;
+            max-width: 940px;
+            .goodluck{
+                width: 100%;
+                background: url('../img/main_image.jpg') no-repeat top right;
+                background-size: 100% 100%;
+                height: 300px;
+                position: relative;
+                .goodluckform{
+                    padding: 10px;
+                    margin: 8px;
+                    width: 35%;
+                    background-color: $third-color-alpha;
+                    border: 1px solid $third-color-alpha;
+                    border-radius: 15px;
+                    color: $font-primary-color;
+                    position: relative;
+                    left: 0px;
+                    display: block;
+                    .control-label{
+                        width: 100%;
+                        font-size: 0.9rem;
+                        color: $font-primary-color;
+                        padding: 0.2rem;
+                        line-height: 1.3rem;
+                        height: 1.6rem;
+                        text-align: center;
+                        margin-bottom: 0.3rem;
+                    }
+                    .select{
+                        width: 99%;
+                        margin: 0px 0px 0px 1%;
+                        box-sizing: border-box;
+                        padding: 0.3rem;
+                        font-size: 0.6rem;
+                        line-height: 1.4rem;
+                        height: 1.4rem;
+                        color: $font-third-color;
+                        border: 1px solid $secondary-color;
+                        border-radius: 5px;
+                    }
+                    .controls-age{
+                        width: 100%;
+                        box-sizing: border-box;
+                        margin: 0px 0px 15px 0px;
+                        padding: 0px;
+                        .control-group{
+                            width: 48%;
+                            display: inline-block;
+                            .controls{
+                                width: 100%;
+                                display: inline-block;
+                                .input-age{
+                                    width: 99%;
+                                    margin: 0px 0px 0px 1%;
+                                    box-sizing: border-box;
+                                    padding: 0.2rem 1rem;
+                                    font-size: 0.7rem;
+                                    line-height: 1.3rem;
+                                    height: 1.4rem;
+                                    color: $font-third-color;
+                                    border: 1px solid $secondary-color;
+                                    border-radius: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .search-label, .search-arrow-down{
+                    display: none;
+                }
+            }
+        }
+    }
+    //** FIN DE GOOD LUCK **//
+    //** JOIN TODAY**//
+    .quotation-marks {
+        img{
+            width: 70%;
+            margin: 0px 15%;
+        }
+    }
+    .arrow{
+        img{
+            width: 70%;
+            margin: 80% 15% 0px;
+            cursor: pointer;
+        }
+    }
+    .text-comment{
+        font-size: 0.7rem;
+        line-height: 0.9rem;
+        text-align: center;
+        height: 2.7rem;
+    }
+    .itemcomment{
+        display: none;
+    }
+    .people{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        height: 160px;
+        .itemstestimonials{
+            margin: 0px;
+            width: calc(100% / 6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            .itemimage{
+                width: 50%;
+                border-radius: 50%;
+                margin: 0px 25%;
+            }
+            .itemname{
+                width: 100%;
+                text-align: center;
+                font-size: 0.7rem;
+                line-height: 0.8rem;
+                height: 0.8rem;
+                font-weight: bold;
+                display: inline-block;
+                color: $font-third-color;
+                margin-bottom: 10px;
+                display: none;
+                overflow: hidden;
+            }
+        }
+    }
+    //** FIN DE JOIN TODAY **//
+}
+@include media-breakpoint-up(xl) {
+    .home-title{
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 0.4rem 0px;
+        color: $font-third-color;
+        width: 100%;
+    }
+    //** GOOD LUCK **//
+    .container-goodluck{
+        padding: 5px 15px 5px;
+        .container{
+            padding: 0px;
+            max-width: 1140px;
+            .goodluck{
+                width: 100%;
+                background: url('../img/main_image.jpg') no-repeat top right;
+                background-size: 100% 100%;
+                height: 350px;
+                position: relative;
+                .search-label, .search-arrow-down{
+                    display: none;
+                }
+                .goodluckform{
+                    padding: 10px;
+                    margin: 8px;
+                    width: 25%;
+                    background-color: $third-color-alpha;
+                    border: 1px solid $third-color-alpha;
+                    border-radius: 15px;
+                    color: $font-primary-color;
+                    position: block;
+                    .control-label{
+                        width: 100%;
+                        font-size: 0.9rem;
+                        color: $font-primary-color;
+                        padding: 0.2rem;
+                        line-height: 1.3rem;
+                        height: 1.6rem;
+                        text-align: center;
+                        margin-bottom: 0.3rem;
+                    }
+                    .select{
+                        width: 99%;
+                        margin: 0px 0px 0px 1%;
+                        box-sizing: border-box;
+                        padding: 0.3rem;
+                        font-size: 0.6rem;
+                        line-height: 1.4rem;
+                        height: 1.6rem;
+                        color: $font-third-color;
+                        border: 1px solid $secondary-color;
+                        border-radius: 5px;
+                    }
+                    .controls-age{
+                        width: 100%;
+                        box-sizing: border-box;
+                        margin: 0px 0px 15px 0px;
+                        padding: 0px;
+                        .control-group{
+                            width: 48%;
+                            display: inline-block;
+                            .controls{
+                                width: 100%;
+                                display: inline-block;
+                                .input-age{
+                                    width: 99%;
+                                    margin: 0px 0px 0px 1%;
+                                    box-sizing: border-box;
+                                    padding: 0.2rem 1rem;
+                                    font-size: 0.6rem;
+                                    line-height: 1.2rem;
+                                    height: 1.4rem;
+                                    color: $font-third-color;
+                                    border: 1px solid $secondary-color;
+                                    border-radius: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //** FIN DE GOOD LUCK **//
+    //** JOIN TODAY**//
+    .quotation-marks {
+        img{
+            width: 70%;
+            margin: 0px 15%;
+        }
+    }
+    .arrow{
+        img{
+            width: 70%;
+            margin: 80% 15% 0px;
+            cursor: pointer;
+        }
+    }
+    .text-comment{
+        font-size: 0.7rem;
+        line-height: 0.9rem;
+        text-align: center;
+        height: 2.7rem;
+    }
+    .itemcomment{
+        display: none;
+    }
+    .people{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        height: 190px;
+        .itemstestimonials{
+            margin: 0px;
+            width: calc(100% / 6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            .itemimage{
+                width: 50%;
+                border-radius: 50%;
+                margin: 0px 25%;
+            }
+            .itemname{
+                width: 100%;
+                text-align: center;
+                font-size: 0.7rem;
+                line-height: 0.8rem;
+                height: 0.8rem;
+                font-weight: bold;
+                display: inline-block;
+                color: $font-third-color;
+                margin-bottom: 10px;
+                display: none;
+                overflow: hidden;
+            }
+        }
+    }
+    //** FIN DE JOIN TODAY **//
+}
+.dividerlogin {
+    border : 0;
+    height: 3px;
+    background-image: linear-gradient(to right, $primary-color-noalpha, $primary-color-alpha, $primary-color-noalpha);
+    width: 90%;
+    margin: 20px 5% 10px;
+}

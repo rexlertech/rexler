@@ -1,0 +1,115 @@
+@import "./bootstrapscss/bootstrap-flex";
+@import "mixins.scss";
+$font-stack: Arial, Helvetica, sans-serif;
+$font-primary-color: white;
+$font-secondary-color: rgb(141, 38, 219);
+$font-third-color: rgb(102, 102, 102);
+$primary-color: rgb(141, 38, 219);
+$secondary-color: rgb(231, 231, 231);
+$third-color: rgb(255,255,255);
+$primary-color-noalpha: rgba(141, 38, 219,0);
+$primary-color-alpha: rgba(141, 38, 219, 0.75);
+$secondary-color-noalpha: rgba(231, 231, 231,0);
+$secondary-color-alpha: rgba(231, 231, 231, 0.75);
+$third-color-noalpha: rgba(255,255,255,0);
+$third-color-alpha: rgba(255,255,255, 0.4);
+
+.asteriskField {
+    display: none;
+}
+//Definiendo los headers
+
+h6 {
+    @include default-header;
+    font-size: 0.5rem;
+    padding: 0.2rem;
+}
+
+h5 {
+    @include default-header;
+    font-size: 0.6rem;
+    padding: 0.2rem;
+}
+
+h4 {
+    @include default-header;
+    font-size: 0.7rem;
+    padding: 0.3rem;
+}
+
+h3 {
+    @include default-header;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+}
+
+h2 {
+    @include default-header;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+}
+
+h1 {
+    @include default-header;
+    font-size: 1rem;
+    padding: 0.3rem;
+}
+//Definicion de los primary
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn-primary:active {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn-primary:hover {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.input-xs {
+    height: 25px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.select2-container {
+    font-size: 0.7rem;
+    min-width: 100% !important;
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    height: 2rem !important;
+    width: 100%;
+    //position: relative;
+    .select2-search__field {
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        height: 2rem !important;
+        line-height: 1.25;
+        color: #55595c;
+        background-color: #fff;
+        background-image: none;
+        background-clip: padding-box;
+        border-radius: 0.25rem;
+    }
+
+    .select2-selection__clear {
+        margin-top: -3px;
+    }
+}
+
+#ui-datepicker-div {
+    font-size: 0.8rem;
+}

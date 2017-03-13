@@ -1,0 +1,49 @@
+{% extends './manager_base.html' %}
+{% load static %}
+{% load sass_tags %}
+{% load crispy_forms_tags %}
+
+{% block linkcss %}
+<link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/inbox_manager.scss" %}">
+{% endblock %}
+
+{% block content %}
+<div class="row mnu_girl">
+    <ul class="ul_girl">
+        {% for g in girls %}
+        {% if forloop.first %}
+        <li id="girl_{{ g.clicode }}" class="girl_selected">
+        {% else %}
+        <li id="girl_{{ g.clicode }}">
+        {% endif %}
+            {% if g.cliage != 0 %}
+            @{{ g.cliusername }}, {{ g.cliage }}
+            {% else %}
+            @{{ g.cliusername }}
+            {% endif %}
+            {% if g.total > 9 %}
+            <div class="new_messages">+9</div>
+            {% else %}
+            <div class="new_messages">{{ g.total }}</div>
+            {% endif %}
+            <div class="qty_messages">{{ g.total }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="row container-manager">
+    <input id="sender" type="hidden" value="{{ client.clicode }}" />
+    <input id="reciever" type="hidden" value="" />
+    <div id="profileContainer" class="col-xs-10 container-profile">
+        <input type="hidden" id="recieved_mail" name="recieved_mail" value="0">
+        {% include "./client_manager.html" %}
+    </div>
+    <div id="chatContainer" class="col-xs-2 container-chat">{% include "./chat_list.html" %}</div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% sass_src "dateSite/js/reconnecting-websocket.min.js" %}"></script>
+<script type="text/javascript" src="{% sass_src "dateSite/js/chat_manager.js" %}"></script>
+<script type="text/javascript" src="{% sass_src "dateSite/js/inbox_manager.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+
+<div class="row profile-header">
+    <div class="col-xs-2 col-sm-4">
+        <a href="{% url 'dateSite:edit_profile' slug=user.username %}">
+            <img src="{% static 'dateSite/img/icons/edit.png' %}" class="icon"/>
+        </a>
+        <label class="title hidden-sm-down">PROFILE</label>
+    </div>
+    <div class="col-xs-10 col-sm-8"><div class="vr"></div></div>
+</div>
+<hr>
+<div class="profile-area">
+    <div class="row">
+        {% if verified %}
+            <div class="col-md-4 col-sm-3 col-xs-6"><img src="{{ profile_picture }}" class="img-thumb"/></div>
+            <div class="col-md-8 col-sm-9 col-xs-6 basic-info">
+                <label>
+                    <a href="{% url 'dateSite:profile' slug=user.username %}">
+                        <b>@{{ username }}</b>
+                    </a>
+                </label>
+                <br />
+                {% if name %}
+                    <label>
+                        <b>{{ name }}</b>
+                    </label>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="col-sm-3 col-xs-6">
+                <img src="{% static 'dateSite/img/icons/profile.png' %}" class="img-thumb"/>
+            </div>
+            <div class="col-sm-9 col-xs-6 basic-info">
+                <label><b>@{{ user }}</b></label>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="logout-area">
+    <form method="post" action="{% url 'account_logout' %}" id="profile">
+        {% csrf_token %}
+        <button class="btn btn-outline btn-xs">Log Out</button>
+    </form>
+</div>

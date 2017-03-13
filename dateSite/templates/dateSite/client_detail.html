@@ -1,0 +1,116 @@
+{% load static %}
+{% load sass_tags %}
+
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        BASIC INFO
+      </a>
+  </div>
+
+  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block">
+      <div class="row">
+          <div class="col-xs-1 card-title">Gender</div>
+          <div class="col-xs-3 card-description">{{ client.cligender }}</div>
+          <div class="col-xs-1 card-title">Marital status</div>
+          <div class="col-xs-3 card-description">{{ client.climarital }}</div>
+          <div class="col-xs-1 card-title">Ethnicity</div>
+          <div class="col-xs-3 card-description">{{ client.cliethnicity }}</div>
+      </div>
+      <div class="row">
+          <div class="col-xs-1 card-title">Height</div>
+          <div class="col-xs-3 card-description">{{ client.cliheight }}</div>
+          <div class="col-xs-1 card-title">Weight</div>
+          <div class="col-xs-3 card-description">{{ client.cliweight }}</div>
+          <div class="col-xs-1 card-title">&nbsp;</div>
+          <div class="col-xs-3 card-description">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col-xs-1 card-title">Education</div>
+          <div class="col-xs-3 card-description">{{ client.clieducation }}</div>
+          <div class="col-xs-1 card-title">Occupation</div>
+          <div class="col-xs-3 card-description">{{ client.cliocupation }}</div>
+          <div class="col-xs-1 card-title">Income</div>
+          <div class="col-xs-3 card-description">{{ client.cliincome }} dollars</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header" role="tab" id="headingTwo">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        HOBBIES
+      </a>
+  </div>
+  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="card-block">
+        <div class="row">
+            {% if client.clihobbies %}
+                {% for h in client.clihobbies %}
+                    <div class="col-xs-2  card-description">{{ h }}</div>
+                {% endfor %}
+            {% else %}
+                <div class="col-xs-12  card-title">Without hobbies to show</div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header" role="tab" id="headingThree">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        SPORTS
+      </a>
+  </div>
+  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+    <div class="card-block">
+        <div class="row">
+        {% if client.clisports %}
+            {% for s in client.clisports %}
+                <div class="col-xs-2 card-description">{{ s }}</div>
+            {% endfor %}
+        {% else %}
+            <div class="col-xs-12 card-title">Without sports to show</div>
+        {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header" role="tab" id="headingFour">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        PETS
+      </a>
+  </div>
+  <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+    <div class="card-block">
+        {% if client.clipets %}
+            <div class="row">
+                <div class="col-xs-3 card-title">Pet</div>
+                <div class="col-xs-3 card-title">Do you have?</div>
+                <div class="col-xs-3 card-title">Do you like?</div>
+                <div class="col-xs-3 card-title">Do you dislike?</div>
+            </div>
+            {% for p in client.clipets %}
+            <div class="row">
+                <div class="col-xs-3 card-title">{{ p.petname }}</div>
+                <div class="col-xs-3 card-description">
+                    {{ p.pechave }}
+                </div>
+                <div class="col-xs-3 card-description">
+                    {{ p.peclike }}
+                </div>
+                <div class="col-xs-3 card-description">
+                    {{ p.pecdontlike }}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="row">
+                <div class="col-xs-12 card-title">Without pets information to show</div>
+            </div>
+        {% endif %}
+    </div>
+  </div>
+</div>

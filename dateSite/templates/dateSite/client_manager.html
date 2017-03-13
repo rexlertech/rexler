@@ -1,0 +1,8 @@
+{% load static %}
+{% load sass_tags %}
+
+<div class="row menu-girl">{% include "./navbar/menu_girl.html" %}</div>
+<div class="row header-girl">{% include "./client_summary.html" %}</div>
+<div class="row detail-info-girl" id="accordion" role="tablist" aria-multiselectable="true">
+{% include "./client_detail.html" %}
+</div>

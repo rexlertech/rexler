@@ -1,0 +1,71 @@
+{% load static %}
+{% load sass_tags %}
+
+<div class="btn-group">
+    <button id="menu-feelings" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="button-icon">
+            <span>I Feel</span>
+            {% if clifeelingpicture == "no" %}
+                <img id='feel-icon' />
+            {% else %}
+                <img id='feel-icon' src="{{ client.clifeelingpicture }}" />
+            {% endif %}
+        </span>
+    </button>
+    <div class="dropdown-menu">
+        <div class="bubble-feeling feelings">
+            {% include "./feeling_form.html" %}
+        </div>
+    </div>
+</div>
+<div class="btn-group">
+    <button id="menu-inbox" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+            <span class="button-icon alertbutton">
+                <span>Inbox</span>
+                <img src="{% static 'dateSite/img/icons/inbox.png' %}">
+                {% if quantity_inb > 9 %}
+                <div id="inboxquantity" class="inboxquantity">+9</div>
+                {% else %}
+                <div id="inboxquantity" class="inboxquantity">{{ quantity_inb }}</div>
+                {% endif %}
+                <div class="qty_inbox">{{ quantity_inb }}</div>
+            </span>
+        </button>
+</div>
+<div class="btn-group">
+    <button id="menu-alerts" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="button-icon alertbutton">
+            <span>Alerts</span>
+            <img src="{% static 'dateSite/img/icons/bell-icon.png' %}" />
+            {% if quantity_ntf > 9 %}
+            <div id="alertsquantity" class="alertsquantity">+9</div>
+            {% else %}
+            <div id="alertsquantity" class="alertsquantity">{{ quantity_ntf }}</div>
+            {% endif %}
+            <div class="qty_alerts">{{ quantity_ntf }}</div>
+        </span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="alerts bubble-alerts">
+            <div class="row alert-header">
+                <div class="col-xs-2 col-sm-4">
+                    <img src="{% static 'dateSite/img/icons/bell-icon.png' %}" class="icon"/>
+                    <label class="title hidden-sm-down">ALERTS</label>
+                </div>
+                <div class="col-xs-10 col-sm-8"><div class="vr"></div></div>
+            </div>
+            <div id="notifications">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="btn-group">
+    <button id="menu-profile-girl" type="button" class="btn btn-default dropdown-toggle">
+            <span class="button-icon alertbutton">
+                <span>Profile</span>
+                <img id="mnu_profile" src="{{ client.clipicture }}">
+            </span>
+        </button>
+</div>

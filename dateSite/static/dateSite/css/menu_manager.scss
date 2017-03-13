@@ -1,0 +1,149 @@
+@import "_definitions.scss";
+
+#menu-items {
+    line-height: 2em;
+    z-index: 1;
+    position: relative;
+    .col-md-3 {
+        line-height: 2em;
+        .btn-group{
+            width: 100%;
+            .dropdown-toggle{
+                padding: 0px 5px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            .dropdown-toggle::after{
+                display: none;
+            }
+            .dropdown-menu {
+                padding: 0;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                width: auto;
+                position: absolute;
+                right: -98px;
+                top: 38px;
+                .bubble-profile{
+                    position: relative;
+                    height: auto;
+                    padding: 0px 0px 5px;
+                    background: #FFFFFF;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    min-width: 350px;
+                    line-height: 2em;
+                }
+                .bubble-profile:after{
+                    content: '';
+                    position: absolute;
+                    border-style: solid;
+                    border-width: 0 20px 15px;
+                    border-color: #FFFFFF transparent;
+                    display: block;
+                    width: 0;
+                    z-index: 1;
+                    top: -13px;
+                    right: 20px;
+                }
+                .profile-menu {
+                    width: 100%;
+                    box-shadow: 2px 4px 5px #808080;
+                    .row {
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        text-align: center;
+                        align-items: center;
+                    }
+                    .profile-header {
+                        margin: 5px auto 15px;
+                        .title {
+                            color: #9a9898;
+                            display: -webkit-inline-box;
+                            vertical-align: -webkit-baseline-middle;
+                            font-weight: bold;
+                            text-transform: capitalize;
+                            font-size: 0.9rem;
+                            line-height: 0.9rem;
+                        }
+                        .vr {
+                            width: 95%;
+                            background-color: #8d26db;
+                            height: 3px;
+                            vertical-align: middle;
+                        }
+                        .icon {
+                            width: 10%;
+                        }
+                    }
+                    hr {
+                        margin: 5px 0px;
+                    }
+                    .profile-area {
+                        padding: 10px 0;
+                        .img-thumb {
+                            width: 85%;
+                            margin: 0 5% 0 15%;
+                            border-radius: 50%;
+                            vertical-align: middle;
+                        }
+                    }
+                    .logout-area {
+                        text-align: center;
+                        padding: 0 0 10px;
+                        border-top: 1px solid #e8e4e4;
+                        margin-top: -1px;
+                        background-color: #f5f5f5;
+                        button {
+                            padding: 5px 20px;
+                            border-radius: 5px;
+                            background-color: transparent;
+                            border-color: #999999;
+                            color: #777;
+                            font-weight: bold;
+                            font-size: small;
+                        }
+                    }
+                    .basic-info {
+                        font-size: 8px;
+                        line-height: 1em;
+                        text-align: left;
+                        padding: 0px 0px 0px 10px;
+                        vertical-align: middle;
+                    }
+                    label {
+                        font-size: 0.9rem;
+                        line-height: 0.9rem;
+                    }
+                    a {
+                        margin: 1.5em 0;
+                    }
+                }
+            }
+            .button-icon {
+                vertical-align: middle;
+                font-size: 1rem;
+                border-radius: 0.25rem;
+                font-weight: bold;
+                vertical-align: -webkit-baseline-middle;
+                color: #747474;
+                margin: 0 15px;
+                img {
+                    width: 35px;
+                    height: 35px;
+                    background-color: #f1f0f0;
+                    border: 1px solid #f1f0f0;
+                    border-radius: 50%;
+                    padding: 0px;
+                    margin: 0 6px;
+                    float: none;
+                }
+            }
+        }
+        .btn-group > .btn:first-child {
+            background-color: transparent;
+        }
+    }
+}

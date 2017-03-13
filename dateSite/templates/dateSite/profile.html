@@ -1,0 +1,308 @@
+{% extends './client_base.html' %}
+{% load static %}
+{% load extra_filters %}
+{% load sass_tags %} {% load crispy_forms_tags %} {% block linkcss %}
+<link rel="stylesheet" href="{% static 'ajaxuploader/css/fileuploader.css' %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src 'dateSite/css/home.scss' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'dateSite/css/baguetteBox.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% sass_src 'dateSite/css/profile.scss' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'dateSite/css/transitions.css' %}"> {% endblock %} {% block content %}
+<section class="hidden-lg-down">
+    <div class="row" id="members-content">
+        <label class="lbl-see-more">See more...</label> {% include 'dateSite/client_list.html' %}
+    </div>
+
+    <button class="go-top" id="btn-go-top">
+        <img src="{% static 'dateSite/img/icons/up-icon.png' %}"/>
+    </button>
+</section>
+<div class="profile row" id="profile-view">
+    <div class="profile-info col-lg-3 col-md-4 col-md-pull-8">
+        <div class="row">
+            {% if member.clicode == user.pk %} {% if profile_percentage < 100 %} <div class="percentage hidden-sm-down container-box">
+                {{ profile_percentage|floatformat:0 }}% complete
+                <progress id="profile_percentage" class="progress progress-striped progress-info progress-animated" max="100">
+                        </progress>
+        </div>
+        {% endif %} {% endif %}
+        <div class="profile-data">
+            <div class="container-box">
+                <div class="hidden-box" id="basic_info">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-9 col-xs-12 name-info">
+                            <strong>
+                                {% if member.cliname %}
+                                    {{ member.cliname }}
+                                    <br />@{{ member.cliusername }}
+                                {% else %}
+                                    @{{ member.cliusername }}
+                                {% endif %}
+                                {% if member.clibirthdate %}
+                                    , {{ member.age }}
+                                {% endif %}
+                            </strong>
+                        </div>
+                        <div class="col-lg-2 col-md-3 click-icon hidden-sm-down">
+                            {% if member.clicode == user.pk %}
+                            <a href="{% url 'dateSite:edit_profile' slug=user.username %}" title="Edit my profile info" data-toggle="tooltip">
+                                <img src="{% static 'dateSite/img/icons/edit.png' %}" />
+                            </a>
+                            {% else %}
+                            <img id="iconchat_{{ member.clicode }}" src="{% static 'dateSite/img/chat_icon.png' %}" class="action-icons" /> {% endif %}
+                        </div>
+                    </div>
+                    {% if member.citcode %}
+                    <p>
+                        <img src="{% static 'dateSite/img/icons/location.png' %}" class="icon" /> <i>{{ member.citcode }}</i>
+                    </p>
+                    <hr>
+                    {% endif %}
+                    <p>
+                        <strong>About me: &nbsp;</strong> {% if member.clidescription %}
+                        <i>{{ member.clidescription }}</i> {% else %}
+                        <div class="no-more"><i>This member didn't add any information yet.</i></div>
+                        {% endif %}
+                    </p>
+                    <hr>
+                    <p><i>I am a {{ member.gencode }}</i></p>
+                    <hr> {% if member.clibirthdate %}
+                    <p><img src="{% static 'dateSite/img/icons/birth-icon.png' %}" class="small-icon" /> &nbsp;
+                        <i>{{ member.clibirthdate }}</i></p>
+                    {% endif %} {% if member.marcode %}
+                    <p><img src="{% static 'dateSite/img/icons/status-icon.png' %}" class="small-icon" /> &nbsp;
+                        <i>{{ member.marcode }}</i></p>
+                    {% endif %}
+                </div>
+                <div class="hidden-box" id="physical_description">
+                    <h3>
+                        {% if member.cliusername|upper|endswith:"S" %}
+                            {{ member.cliusername }} description
+                        {% else %}
+                            {{ member.cliusername }}'s description
+                        {% endif %}
+                    </h3>
+                    <hr>
+                    {% if not member.bodycode and not member.heicode and not member.weicode and not member.eyecode and not member.haicode %}
+                    <div class="no-more"><i>This member didn't add any information yet.</i> </div>
+                    {% else %}
+                        {% if member.bodycode %}
+                        <p>Body type: &nbsp;
+                            <b>{{ member.bodycode }}</b></p>
+                        {% endif %}
+                        {% if member.heicode %}
+                        <p><img src="{% static 'dateSite/img/icons/height-icon.png' %}" class="small-icon" /> &nbsp;
+                            <i>{{ member.heicode }}</i></p>
+                        {% endif %} {% if member.weicode %}
+                        <p><img src="{% static 'dateSite/img/icons/weight-icon.png' %}" class="small-icon" /> &nbsp;
+                            <i>{{ member.weicode }}</i></p>
+                        {% endif %}
+                        {% if member.eyecode %}
+                        <p>Eyes color: &nbsp;
+                            <b>{{ member.eyecode }}</b></p>
+                        {% endif %}
+                        {% if member.haicode %}
+                        <p>Hair: &nbsp;
+                            <b>{{ member.haicode }}</b>
+                            {% if member.hlecode %}
+                            <b>& {{ member.hlecode }}</b>
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                    {% endif %}
+                    <hr>
+                    <h3>Other</h3>
+                    {% if not member.frecodedrink and not member.frecodesmoke and not member.zodcode and not member.relcode and not member.chicode %}
+                    <div class="no-more">
+                        <i>No more to show</i>
+                    </div>
+                    {% else %}
+                        {% if member.frecodedrink %}
+                        <p>Drink: &nbsp;
+                            <b>{{ member.frecodedrink }}</b></p>
+                        {% endif %}
+                        {% if member.frecodesmoke %}
+                        <p>Smoke: &nbsp;
+                            <b>{{ member.frecodesmoke }}</b></p>
+                        {% endif %}
+                        {% if member.zodcode %}
+                        <p>Zodiac Sign: &nbsp;
+                            <b>{{ member.zodcode }}</b></p>
+                        {% endif %}
+                        {% if member.relcode %}
+                        <p>Religion Belief: &nbsp;
+                            <b>{{ member.relcode }}</b></p>
+                        {% endif %}
+                        {% if member.chicode %}
+                        <p>Have children: &nbsp;
+                            <b>{{ member.chicode }}</b></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="hidden-box" id="work_education">
+                    <h3>Work and Education</h3>
+                    <hr>
+                    {% if not member.educode and not member.ocucode and not member.lancodefirst and not lancodesecond %}
+                    <div class="no-more"><i>This member didn't add any information yet.</i> </div>
+                    {% else %} {% if member.educode %}
+                    <p><img src="{% static 'dateSite/img/icons/education-icon.png' %}" class="small-icon" />
+                        <i>{{ member.educode }}</i>
+                    </p>
+                    {% endif %} {% if member.ocucode %}
+                    <p><img src="{% static 'dateSite/img/icons/work-icon.png' %}" class="small-icon" />
+                        <i>{{ member.ocucode }}</i>
+                    </p>
+                    {% endif %}
+                    {% if member.inccode %}
+                    <p><img src="{% static 'dateSite/img/icons/income-icon.png' %}" class="small-icon" />
+                        <i>${{ member.inccode }} USD</i>
+                    </p>
+                    {% endif %}
+                    {% if member.lancodefirst %}
+                    <hr>
+                    <p>
+                        <ul><img src="{% static 'dateSite/img/icons/languages-icon.png' %}" class="small-icon" />
+                            <i>Languages:</i>
+                            <li><i>&bull; &nbsp;{{ member.lancodefirst }}</i></li>
+                            {% endif %} {% if member.lancodesecond %}
+                            <li><i>&bull; &nbsp;{{ member.lancodesecond }}</i> {% if member.langlevel %}
+                                <i>: {{ member.langlevel }} %</i> {% endif %}</li>
+                        </ul>
+                    </p>
+                    {% endif %} {% endif %}
+                </div>
+                <div class="hidden-box" id="hobbies">
+                    <h3>Hobbies</h3> <hr>{% if hobbies_member %} {% for hobbie in hobbies_member %}
+                    <label>{{ hobbie }}</label> {% endfor %}
+                    {% else %}
+                    <div class="no-more"><i>This member didn't add any information yet.</i></div>
+                    {% endif %}
+                </div>
+                {% if member.clicode == user.pk %}
+                <div class="hidden-box" id="change_pass">
+                    <h3>Change Password</h3>
+                    <hr>
+                    <div class="password-form">
+                        <form method="POST" action="{% url 'account_change_password' %}" class="password_change">
+                            {% csrf_token %} {% crispy changepass_form %}
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <hr class="style">
+    <div class="container-links">
+        <div class="row">
+            <a id="info_link">Basic Info</a>
+        </div>
+        <div class="row">
+            <a id="physical_link">
+                {% if member.cliusername|upper|endswith:"S" %}
+                    {{ member.cliusername }} description
+                {% else %}
+                    {{ member.cliusername }}'s description
+                {% endif %}
+            </a>
+        </div>
+        <div class="row">
+            <a id="work_link">Work and Education</a>
+        </div>
+        <div class="row">
+            <a id="hobbies_link">Hobbies</a>
+        </div>
+        {% if member.clicode == user.pk %}
+        <div class="row">
+            <a id="pass_link">Change Password</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="profile-viewer col-lg-9 col-md-8 col-md-push-4">
+    <div class="row profile-top">
+        <div class="profile_picture col-md-4 col-xs-6">
+            <a id="link-preview" href="{{ member.profile_picture }}">
+                <img id="picture-preview" src="{{ member.profile_picture }}" class="picture profile-img" />
+            </a>
+        </div>
+        <div class="thumbs-preview col-md-8 col-xs-6" id="pictures-box">
+            {% if not public_album %}
+            <label class="message">No pictures to show</label> {% else %}
+            <div class="Collage">
+                {% for picture in public_album %}
+                <a class="img-thumb" href="/media/{{ picture.picpath }}">
+                    <img alt="{{ picture.piccode }}" id="{{ picture.piccode }}" src="/media/{{ picture.picpath }}" class="thumb">
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <label class="thumbs-preview-more" style="display:none">Slide to see more</label>
+        </div>
+    </div>
+    <div class="row profile-albums">
+        <div class="albums col-md-12">
+            <div class="title">
+                {% if member.clicode == user.pk %}
+                <div class="add-album">
+                    <h3>My Albums</h3>
+                    <button id="add-album" class="btn btn-primary">Add New Album</button>
+                </div>
+                {% else %}
+                <h3>
+                    {% if member.cliusername|upper|endswith:"S" %}
+                        {{ member.cliusername }} albums
+                    {% else %}
+                        {{ member.cliusername }}'s albums
+                    {% endif %}
+                </h3>
+                {% endif %}
+            </div>
+            <div class="row" id="albums-box">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include "./modal_dialog.html" %} {% endblock %} {% block javascript %}
+<script type="text/javascript" src="{% static 'dateSite/js/bootstrap-filestyle.min.js' %}">
+</script>
+<script>
+    var percentage, o_album_list, user_pk, client_code, is_me, profilepic_url, delete_album;
+    var private_collection, gallery_row_heigth, viewer_height, album_length, url_clients;
+    $(document).ready(function() {
+        percentage = '{{ profile_percentage }}';
+        user_pk = '{{ user.pk }}';
+        client_code = '{{ member.clicode }}';
+        private_collection = '{{ private_collection }}';
+        o_album_list = '{{ album_list|safe|escapejs }}';
+        profilepic_url = '{% url "dateSite:profile_picture" %}';
+        getalbum_url = '{% url "dateSite:get_album" %}';
+        getalbums_url = '{% url "dateSite:get_albums" %}';
+        createalbum_url = '{% url "dateSite:create_album" %}';
+        deletealbum_url = '{% url "dateSite:delete_album" %}'
+        privatealbum_url = '{% url "dateSite:add_private_album" %}';
+        album_length = '{{ public_album|length }}';
+        url_clients = "{% url 'dateSite:client_list' %}";
+        percentage = '{{ profile_percentage }}';
+    });
+
+    var pictures_to_upload = [];
+</script>
+
+<script type="text/javascript" src="{% static 'dateSite/js/jquery.removeWhitespace.js' %}"></script>
+<script type="text/javascript" src="{% static 'dateSite/js/jquery.collagePlus.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'dateSite/js/scrollpagination.js' %}"></script>
+<script type="text/javascript" src="{% static 'dateSite/js/profileFunctions.js' %}"></script>
+<script type="text/javascript" src="{% static 'dateSite/js/baguetteBox.min.js' %}"></script>
+
+<!-- Files Upload -->
+<script src="{% static 'ajaxuploader/js/fileuploader.js' %}"></script>
+<script src="{% static 'file_form/file_form.js' %}"></script>
+
+<script>
+    $(function() {
+        initUploadFields($('#upload-form'));
+    });
+</script>
+{% endblock %}

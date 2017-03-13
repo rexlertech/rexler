@@ -1,0 +1,43 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+<div class="row search-header">
+    <div class="col-xs-2 col-sm-4">
+        <img src="{% static 'dateSite/img/icons/search-icon.png' %}" class="icon"/>
+        <label class="title hidden-sm-down">SEARCH</label>
+    </div>
+    <div class="col-xs-10 col-sm-8"><div class="vr"></div></div>
+</div>
+<form id="search" method="post">
+    {% csrf_token %}
+    {% crispy search_form %}
+    <input type="button" class="search-btn btn btn-primary btn-xs" value="search" />
+</form>
+
+<script type="text/javascript">
+$("#search").submit(function(){return false;});
+$('.search-btn').click(function(e){
+    simple_search(e, "{% url 'dateSite:main' %}");
+});
+
+function getClientList(min_age, max_age, country, id){
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'dateSite:client_list' %}",
+        data: {
+            'min_age': min_age,
+            'max_age': max_age,
+            'country': country,
+            'list_id': id,
+        },
+        success: function(json_members){
+            showClientList(json_members, true);
+        },
+        error:function (){
+        }
+    });
+}
+</script>

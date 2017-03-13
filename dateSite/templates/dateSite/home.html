@@ -1,0 +1,24 @@
+{% extends './client_base.html' %}
+{% load static %}
+{% load sass_tags %}
+{% load crispy_forms_tags %}
+
+{% block contentinit %}
+    <input type="hidden" id="client_list_id" name="client_list_id" />
+{% endblock %}
+{% block content %}
+    <div id="members-content" class="row">
+        {% include 'dateSite/client_list.html' %}
+    </div>
+{% endblock %}
+{% block contentend %}
+    <div class="loading" id="loading">
+        <img src="{% static 'dateSite/img/icons/loader.gif' %}" />
+    </div>
+    <div class="loading" id="nomoreresults"></div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static "dateSite/js/scrollpagination.js" %}"></script>
+    <script type="text/javascript" src="{% static "dateSite/js/home.js" %}"></script>
+{% endblock %}

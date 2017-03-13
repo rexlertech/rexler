@@ -1,0 +1,287 @@
+@import "public.scss";
+
+.logo-img {
+    position: relative;
+}
+
+@include media-breakpoint-up(xs) {
+    a{ color: $font-secondary-color; }
+    a:hover{ color: $font-third-color; }
+    .signup{
+        width: 80%;
+        padding: 0px;
+        margin: 0px 10%;
+        .control-group{
+            width: 100%;
+            display: block;
+            .control-label{
+                box-sizing: border-box;
+                padding: 0px 5px 0px 0px;
+                text-align: left;
+                @include label-text-md;
+                color: $font-third-color;
+            }
+            .controls{
+                width: 100%;
+                .textInput, .select{
+                    width: 100%;
+                    color: $font-third-color;
+                    border: 1px solid $font-third-color;
+                    @include border-radius(5px);
+                    @include control-text-md;
+                    box-sizing: border-box;
+                }
+                .help-inline{
+                    font-size: 0.7rem;
+                    font-weight: 300;
+                    font-style: italic;
+                }
+            }
+            .controls-age{
+                display: block;
+                width: 100%;
+                margin-left: 0.7%;
+                .control-group{
+                    display: inline-block;
+                    width: 48.8%;
+                    .controls{
+                        display: inline-block;
+                        width: 100%;
+                        .inpput-age{
+                            width: 100%;
+                            color: $font-third-color;
+                            border: 1px solid $font-third-color;
+                            @include border-radius(5px);
+                            @include control-text-md;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-primary{
+            width: 45%;
+            margin: 30px 5% 5px 50%;
+        }
+    }
+    .search{
+        margin: 130px auto 10px 25px;
+        font-weight: bold;
+        vertical-align: middle;
+        padding: 5px;
+        text-align: left;
+        .dropdown-menu{
+            width: 400px;
+            line-height: 3rem;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+        .search-header{
+            padding: 0;
+            margin: 0px;
+            align-items: center;
+            margin: 5px auto;
+            img.icon{
+                width: 15%;
+                min-width: 25px;
+                vertical-align: middle;
+                min-width: 25px;
+            }
+            .title{
+                vertical-align: middle;
+                margin: 0;
+                .hidden-sm-down {
+                    display: block;
+                }
+            }
+            .vr {
+                width: 95%;
+                background-color: #8d26db;
+                height: 3px;
+                vertical-align: middle;
+            }
+        }
+        img{
+            width: 35px;
+            height: 35px;
+            background-color: #f1f0f0;
+            border: 1px solid #f1f0f0;
+            border-radius: 50%;
+            padding: 6px 5px 5px;
+            margin: 0 6px;
+        }
+        .btn-default{
+            padding: 10px;
+            background-color: transparent;
+            color: #747474;
+            font-weight: 700;
+        }
+        .advanced-search{ display: none; }
+        label {
+            font-size: 14px;
+            color: #9a9898;
+            vertical-align: middle;
+        }
+        select.form-control-sm:not([size]):not([multiple]){
+            min-width: 50px;
+            font-weight: normal;
+            font-size: 0.6em;
+            max-width: 90px;
+            height: 30px;
+            vertical-align: text-bottom;
+        }
+        .text-description{
+            text-align: center;
+            border-bottom: 3px solid;
+            font-size: 0.8em;
+        }
+        .control-label{ display: inline-block; }
+        .simple-search{
+            text-align: center;
+            line-height: 1em;
+            br {display: none;}
+            .control-group{
+                margin: 5px 0px;
+                display: inline-block;
+            }
+        }
+        .search-check{
+            display: -webkit-inline-box;
+            text-align: -webkit-center;
+            .control-group{
+                margin: 0 5px;
+                display: inline-block;
+                font-size: 0.9rem;
+            }
+        }
+        input[type="submit"]{
+            margin: 5px auto;
+            padding: 5px 10px;
+            font-size: medium;
+            text-transform: capitalize;;
+            border-radius: 5px;
+        }
+    }
+    footer{
+        margin-top: 65px;
+    }
+}
+@include media-breakpoint-up(md) {
+    .signup{
+        width: 80%;
+        padding: 0px;
+        margin: 0px;
+        .control-group{
+            width: 100%;
+            display: block;
+            padding: 5px 0px;
+            .control-label{
+                display: inline-block;
+                width: 45%;
+                box-sizing: border-box;
+                padding: 0px 5px 0px 0px;
+                text-align: right;
+                @include label-text-md;
+                color: $font-third-color;
+            }
+            .controls{
+                display: inline-block;
+                width: 45%;
+                .textInput, .select{
+                    width: 100%;
+                    color: $font-third-color;
+                    border: 1px solid $font-third-color;
+                    @include border-radius(5px);
+                    @include control-text-md;
+                    box-sizing: border-box;
+                }
+            }
+            .controls-age{
+                display: inline-block;
+                width: 45%;
+                margin-left: 0.7%;
+                .control-group{
+                    display: inline-block;
+                    width: 48.8%;
+                    .controls{
+                        display: inline-block;
+                        width: 100%;
+                        .inpput-age{
+                            width: 100%;
+                            color: $font-third-color;
+                            border: 1px solid $font-third-color;
+                            @include border-radius(5px);
+                            @include control-text-md;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-primary{
+            width: 25%;
+            margin: 30px 5% 5px 66%;
+        }
+        .modal:before{
+            display: inline-block;
+        }
+    }
+}
+@include media-breakpoint-up(lg) {
+    .signup{
+        width: 80%;
+        padding: 0px;
+        margin: 0px;
+        .control-group{
+            width: 100%;
+            display: block;
+            .control-label{
+                display: inline-block;
+                width: 45%;
+                box-sizing: border-box;
+                padding: 0px 5px 0px 0px;
+                text-align: right;
+                @include label-text-md;
+                color: $font-third-color;
+            }
+            .controls{
+                display: inline-block;
+                width: 45%;
+                .textInput, .select{
+                    width: 100%;
+                    color: $font-third-color;
+                    border: 1px solid $font-third-color;
+                    @include border-radius(5px);
+                    @include control-text-md;
+                    box-sizing: border-box;
+                }
+            }
+            .controls-age{
+                display: inline-block;
+                width: 45%;
+                margin-left: 1%;
+                .control-group{
+                    display: inline-block;
+                    width: 49%;
+                    .controls{
+                        display: inline-block;
+                        width: 100%;
+                        .inpput-age{
+                            width: 100%;
+                            color: $font-third-color;
+                            border: 1px solid $font-third-color;
+                            @include border-radius(5px);
+                            @include control-text-md;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-primary{
+            width: 25%;
+            margin: 30px 5% 5px 66%;
+        }
+    }
+}

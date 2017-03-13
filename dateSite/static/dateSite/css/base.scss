@@ -1,0 +1,297 @@
+@import "_definitions.scss";
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    scrollbar-face-color: blue;
+}
+//Definiendo los mixins
+@include media-breakpoint-up(xs) {
+    html {
+        font-size: 14px !important;
+    }
+    //Header
+    .navbar-brand {
+        background: url('../img/logo.png') no-repeat top left;
+        background-size: 5rem 3rem;
+        height: 3rem;
+        padding: 0 0 0 5.3rem;
+        box-sizing: border-box;
+        margin-left: -15px;
+    }
+
+    .btn-menu {
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        border-radius: 10px;
+        margin-right: -10px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .logo-img {
+        position: absolute;
+        margin: 0 auto;
+        z-index: 3;
+    }
+
+    .navbar {
+        border-radius: 0.05rem;
+        border-bottom: 2px solid $secondary-color;
+    }
+
+    .navbar-back {
+        background-color: #e7e7e7;
+        padding: 0 1rem;
+        overflow-y: visible;
+    }
+    //Confirm Email Address Modal
+    #verifiedModal {
+        text-align: center;
+        padding: 0 !important;
+        height: 100%;
+
+        .modal-dialog {
+            top: 50% !important;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .modal-content {
+            background-color: $font-secondary-color;
+            color: $font-primary-color;
+        }
+
+        .modal-header {
+            padding: 0;
+            border-bottom: none;
+
+            button.close {
+                color: #55595c;
+                text-shadow: 0 1px 0 #ccc;
+                opacity: 1;
+                border-radius: 50%;
+                margin: -15px -10px 0 0;
+                background-color: #ccc;
+                padding: 0 8px 6px;
+                z-index: 10;
+            }
+        }
+
+        .modal-body {
+            padding: 25px 40px 35px;
+        }
+
+        &.fade .modal-dialog {
+            transform: translateY(-100%) !important;
+        }
+
+        &.in .modal-dialog {
+            transform: translateY(-50%) !important;
+        }
+    }
+
+    .info-container {
+        text-align: center;
+        margin-top: 105px;
+        line-height: 2.2rem;
+
+        .btn {
+            line-height: 1;
+            font-size: 0.8rem;
+        }
+
+        .input-xs {
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        form {
+            padding: 25px 0;
+            text-align: -webkit-right;
+        }
+
+        .controls {
+            display: inline-block;
+        }
+
+        .btn-xs {
+            padding: 0.3rem 1rem;
+            margin: 0;
+        }
+    }
+}
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 16px !important;
+    }
+
+    .navbar-brand {
+        background: url('../img/logo.png') no-repeat top left;
+        background-size: 5rem 2.8rem;
+        height: 2.8rem;
+        padding: 0 0 0 5.2rem;
+        box-sizing: border-box;
+    }
+}
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 18px !important;
+    }
+
+    .navbar {
+        border-bottom: none;
+    }
+
+    .navbar-brand {
+        background: url('../img/logo.png') no-repeat top left;
+        background-size: 5rem 3rem;
+        height: 3rem;
+        padding: 0 0 0 5.3rem;
+        box-sizing: border-box;
+
+        h1 {
+            padding: 0.5rem 0;
+            font-family: 'Dancing Script', cursive;
+            color: $font-secondary-color;
+            text-align: left;
+            font-size: 1.5rem;
+        }
+    }
+
+    .logo-img {
+        position: absolute;
+        margin: -8px auto 0;
+        z-index: 3;
+    }
+
+    #menu-items {
+        line-height: 0;
+    }
+}
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 20px !important;
+    }
+
+    .navbar-brand {
+        background: url('../img/logo.png') no-repeat top left;
+        background-size: 4.7rem 3.2rem;
+        height: 3.2rem;
+        padding: 0 0 0 5.2rem;
+        box-sizing: border-box;
+
+        h1 {
+            padding: 1rem 0;
+            font-family: 'Dancing Script', cursive;
+            color: $font-secondary-color;
+            text-align: left;
+            font-size: 1.4rem;
+        }
+    }
+}
+@include media-breakpoint-up(xl) {
+    html {
+        font-size: 22px;
+    }
+
+    .navbar-brand {
+        background: url('../img/logo.png') no-repeat top left;
+        background-size: 5.2rem 3.2rem;
+        height: 3.2rem;
+        padding: 0 0 0 5.6rem;
+        box-sizing: border-box;
+
+        h1 {
+            padding: 0.7rem 0;
+            font-family: 'Dancing Script', cursive;
+            color: $font-secondary-color;
+            text-align: left;
+            font-size: 1.7rem;
+        }
+    }
+}
+//Clases del header
+
+.navbar {
+    background-color: white;
+    border-radius: 0 !important;
+    z-index: 2;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0 !important;
+    box-shadow: 0 0 11px #a19f9f;
+}
+
+.navbar-back {
+    background-color: $secondary-color;
+    padding: 0 1rem;
+    overflow-y: visible;
+}
+
+button[type="button"] {
+    padding: 0 15px 3px;
+}
+
+.subpage {
+    padding-top: 90px;
+    min-height: 100%;
+    height: auto !important;
+    display: block;
+
+    h1 {
+        color: $font-secondary-color;
+        width: 100%;
+    }
+
+    h4 {
+        color: $font-third-color;
+        width: 100%;
+    }
+
+    p {
+        font-size: 0.8rem;
+        text-align: justify;
+    }
+
+    ol,
+    ul {
+        li {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+a:active,
+a:hover {
+    color: $font-primary-color;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F0F0F0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    width: 0;
+    height: 0;
+}

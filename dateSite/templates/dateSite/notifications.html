@@ -1,0 +1,54 @@
+{% extends './client_base.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block linkcss %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/alert.scss" %}">
+{% endblock %}
+
+{% block content %}
+    <h2>My alerts</h2>
+    <div class="row">
+    {% for alert in all_notifications  %}
+        <div class="col-xs-12">
+            <div class="img-container">
+                <a href="{% url 'dateSite:profile' slug=alert.clicodesent %}">
+                    <img src="{{ alert.clicodesent.profile_picture }}"/>
+                </a>
+            </div>
+            <div class="alert-description">
+                <strong>
+                    <a href="{% url 'dateSite:profile' slug=alert.clicodesent %}">
+                        <b>@{{ alert.ntymessage }}</b>
+                    </a>
+                </strong>
+                {% if alert.clicodesent.cliname %}
+                    <br />
+                    {{ alert.clicodesent.cliname }}
+                {% endif %}
+                {% if alert.clicodesent.clidescription %}
+                    <br />
+                    {{ alert.clicodesent.clidescription|truncatechars:100 }}
+                {% endif %}
+                {% if alert.clicodesent.citcode %}
+                <br />
+                    {{ alert.clicodesent.citcode }}
+                {% endif %}
+                <div class="col-md-3 hidden-sm-down">
+                    <img id="iconchat_{{ alert.clicodesent.clicode }}" src="{% static 'dateSite/img/chat_icon.png' %}" class="action-icons"/>
+                </div>
+                <span class="date">{{ alert.notdate }}</span>
+            </div>
+            <hr />
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function() {
+        $('.img-container').height($('.img-container>a>img').width());
+    });
+</script>
+{% endblock %}

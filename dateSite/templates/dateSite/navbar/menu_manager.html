@@ -1,0 +1,28 @@
+{% load static %}
+{% load sass_tags %}
+
+<div class="col-md-3">
+    <div class="center-block">
+        <div class="btn-group">
+            <button type="button" id="menu-profile" class="btn btn-default dropdown-toggle"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="button-icon">
+                    <span>Profile</span>
+                    {% if client %}
+                    <img src="{{ profile_picture }}" class="profile-picture"/>
+                    {% else %}
+                    <img src="{% static 'dateSite/img/icons/profile.png' %}" />
+                    {% endif %}
+                </span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="profile-menu bubble-profile">
+                    {% include "./profile_menu_manager.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascript %}
+    <script type="text/javascript" src="{% sass_src "dateSite/js/menu_manager.js" %}"></script>
+{% endblock %}

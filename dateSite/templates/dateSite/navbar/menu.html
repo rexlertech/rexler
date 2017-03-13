@@ -1,0 +1,42 @@
+{% load static %}
+{% load sass_tags %}
+
+<div class="col-md-12">
+    <div class="center-block">
+        <div class="btn-group">
+            <button id="menu-profile" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="button-icon">
+                    <span>Profile</span>
+                    <div class="img-icon profile-picture">
+                        {% if client %}
+                        <img src="{{ profile_picture }}" id="menu-profile-pic"/>
+                        {% else %}
+                        <img src="{% static 'dateSite/img/icons/profile.png' %}" />
+                        {% endif %}
+                    </div>
+                </span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="profile-menu bubble-profile dropdown-menu-profile">
+                    {% include "./profile_menu.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-profile" class="modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body profile-menu">
+                {% include "./profile_menu.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'dateSite/js/menu.js' %}"></script>
+{% endblock %}

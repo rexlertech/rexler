@@ -1,0 +1,10 @@
+{% extends "../dateSite/public_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load sass_tags %}
+{% block linkcss %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/login.scss" %}">
+{% endblock %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}

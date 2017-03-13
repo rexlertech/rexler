@@ -1,0 +1,34 @@
+{% load static %}
+{% load extra_filters %}
+{% for member in members %}
+<div id="member_{{ member.clicode }}" name="list_members" class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+    <div class="profile-preview">
+        <div class="row profile-info">
+            <div class="{% if member.feecode %} col-xs-9 {% else %} col-xs-12 {% endif %}">
+                <strong>
+                            <b>@{{ member.cliusername }}</b>
+                    {% if member.age != 0 %}
+                        , {{ member.age }}
+                    {% endif %}
+                </strong> {% if member.citcode %}
+                <br /> {{ member.citcode }} {% endif %}
+            </div>
+            {% if member.feecode %}
+            <div class="col-xs-3">
+                <div class="feel">
+                    <img src="{{ member.feecode.feeiconfile.url }}" alt="{{ member.feecode.feedescription }}" />
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <ul class="hidden-sm-down row bottom-icons">
+            <li class="col-md-6 separator">
+                <img src="{% static 'dateSite/img/icons/inbox.png' %}" class="" />
+            </li>
+            <li class="col-md-6">
+                <img id="iconchat_{{ member.clicode }}" src="{% static 'dateSite/img/chat_icon.png' %}" class="action-icons" />
+            </li>
+        </ul>
+    </div>
+</div>
+{% endfor %}

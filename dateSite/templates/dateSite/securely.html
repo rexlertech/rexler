@@ -1,0 +1,42 @@
+{% extends "./public_base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "About Us" %}{% endblock %}
+
+{% block content %}
+<div class="cotainer-fluid subpage">
+    <div class="container">
+        <div class="row">
+            <h1>Dating Securely</h1>
+        </div>
+        <div class="row">
+            <h4>Tips to be safe</h4>
+            <ol>
+                <li>Never send any money to a lady.</li>
+                <li>Exchange contact information with the lady through “Call me” service.</li>
+                <li>Once in a while conduct video chat with your lady.</li>
+            </ol>
+        </div>
+        <div class="row">
+            <h4>Scam and reimbursements</h4>
+            <ol>
+                <li>A lady misidentifies herself. (For example, an agency uses her profile without her permission to communicate with you). We reimburse all credits you incurred communicating with the lady.</li>
+                <li>A lady requests money or expensive gifts from you. We reimburse all credits spent on communicating with the lady and ban her permanently.</li>
+                <li>A lady deliberately misrepresents her details: age, kids, gender, marital status or language level. We reimburse all credits you incurred communicating with the lady and ban her permanently.</li>
+                <li>Gifts of flowers that were ordered through the system were not delivered. We reimburse all credits you incurred for the flower delivery order.</li>
+            </ol>
+        </div>
+        <div class="row">
+            <h4>Not scam</h4>
+            <ol>
+                <li>The agency makes a mistake in the translation of the letter.</li>
+                <li>If a lady doesn’t answer all questions in an email.</li>
+                <li>If after meeting with customer she says she is not interested.</li>
+                <li>If a lady has photos of her relatives, male friends, ex-boyfriend, ex-husband and other personal info posted on any social network.</li>
+                <li>If a lady wears rings on fingers. Wearing rings in Latin countries does not mean a woman is married, regardless of which finger it is on.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}

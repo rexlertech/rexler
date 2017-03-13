@@ -1,0 +1,104 @@
+{% extends './public_base.html' %}
+{% load static %}
+{% load sass_tags %}
+{% load crispy_forms_tags %}
+
+{% block linkcss %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/home.scss" %}">
+    <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/signup.scss" %}">
+{% endblock %}
+
+{% block contentinit %}
+    <input type="hidden" id="client_list_id" name="client_list_id" />
+{% endblock %}
+{% block content %}
+<div class="subpage">
+    <section class="container-home">
+        <div class="search">
+            <div class="center-block">
+                <div class="btn-group">
+                    <button id="menu-search" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        <span class="button-icon span-search">
+                            <span>Search</span>
+                            <img src="{% static 'dateSite/img/icons/search-icon.png' %}" />
+                        </span>
+                    </button>
+                    <div class="dropdown-menu">
+                        {% include 'dateSite/navbar/search_form.html' %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="container membersContainer online-members row" id="membersContainer">
+                {% include 'dateSite/client_list.html' %}
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="signupModal" class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="signup">
+                    <h1>Sign Up</h1>
+                    <p>Already have an account? Then please <a href="{% url 'dateSite:login' %}">log in</a>.</p>
+                    <form id="signup_form" method="post" action="{% url 'account_signup' %}">
+                        {% csrf_token %}
+                        {% crispy signup_form %}
+                        {% crispy goodluck_form %}
+                        <input type="submit" class="btn-primary btn-sm" value="signup" id="signup-submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block contentend %}
+    <div class="loading" id="loading">
+        <img src="{% static 'dateSite/img/icons/loader.gif' %}" />
+    </div>
+    <div class="loading" id="nomoreresults">Sorry, no more results to display.</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function() {
+        var modal = '{{ modal }}'
+        if(modal == 'True'){
+            $('#signupModal').modal('show');
+        }
+    });
+
+    //Avoid search dropdown closing when clicked
+    $('#menu-search').on('click', function (event) {
+        $('.dropdown-menu').toggleClass('open');
+    });
+
+    //close search dropdown when user click outsite
+    $('body').on('click', function (e) {
+        if (!$('.span-search').is(e.target)
+            && $('.span-search').has(e.target).length === 0
+            && $('.open').has(e.target).length === 0
+            ) {
+                $('.btn-group').removeClass('open');
+            }
+    });
+</script>
+<script type="text/javascript" src="{% sass_src "dateSite/js/menu.js" %}"></script>
+<script type="text/javascript" src="{% sass_src "dateSite/js/scrollpagination.js" %}"></script>
+<script type="text/javascript">
+$(function(){
+    var url = "{% url 'dateSite:client_list' %}";
+    show_more(url);
+});
+</script>
+{% endblock %}

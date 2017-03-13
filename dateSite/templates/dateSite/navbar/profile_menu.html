@@ -1,0 +1,67 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+
+
+<div class="row profile-header">
+    <div class="col-xs-2 col-sm-4">
+        <label class="title hidden-sm-down">PROFILE</label>
+    </div>
+    <div class="col-xs-10 col-sm-8"><div class="vr"></div></div>
+</div>
+<div class="profile-area">
+    <div class="row">
+        {% if verified %}
+            <div class="col-md-4 col-sm-3 col-xs-6">
+                <div id="profile-pic-container" class="profile-pic-container">
+                    <img id="dropmenu-profile-pic" src="{{ profile_picture }}" class="img-thumb"/>
+                </div>
+                <div class="edit">
+                    <img src="{% static 'dateSite/img/icons/edit.png' %}" class="icon"/>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-9 col-xs-6 basic-info">
+                <label class="center">
+                    <a href="{% url 'dateSite:profile' slug=user.username %}">
+                        <b>@{{ username }}</b>
+                    </a>
+                </label>
+                {% if name %}
+                    <label class="center">
+                        <b>{{ name }}</b>
+                    </label>
+                {% endif %}
+                {% if city %}
+                    <label>
+                        <img src="{% static 'dateSite/img/icons/location.png' %}" class="small-icon" /> <i>{{ city }}</i>
+                    </label>
+                {% endif %}
+                {% if marital_status %}
+                    <label>
+                        <img src="{% static 'dateSite/img/icons/status-icon.png' %}" class="small-icon" />
+                        {{ marital_status }}
+                    </label>
+                {% endif %}
+                {% if height %}
+                    <label><img src="{% static 'dateSite/img/icons/height-icon.png' %}" class="small-icon" />{{ height }}</label>
+                {% endif %}
+                {% if weight %}
+                    <label><img src="{% static 'dateSite/img/icons/weight-icon.png' %}" class="small-icon" />{{ height }}</label>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="col-sm-3 col-xs-6">
+                <img src="{% static 'dateSite/img/icons/profile.png' %}" class="img-thumb"/>
+            </div>
+            <div class="col-sm-9 col-xs-6 basic-info">
+                <label><b>@{{ user }}</b></label>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="logout-area">
+    <form method="post" action="{% url 'account_logout' %}" id="profile">
+        {% csrf_token %}
+        <button class="btn btn-outline btn-xs">Log Out</button>
+    </form>
+</div>

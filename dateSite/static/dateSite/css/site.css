@@ -1,0 +1,49 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FFF;
+    color: #000;
+}
+
+nav .img-logo{
+        text-align: -webkit-left;
+}
+
+    .img-logo{
+        width: 120px;
+    }
+
+nav .login-navbar{
+        text-align: -webkit-right;
+}
+
+    .login-navbar{
+        background-color: transparent;
+        line-height: 200%;
+    }
+
+    .login-navbar div{
+        text-align: -webkit-center;
+    }
+
+nav div.control-group, .form-actions{
+    display: inline-block;
+}
+
+#bottom-block div {
+    display: inline-block;
+}
+
+.login-signup-advice{
+    font-size: 11px;
+}
+
+#bottom-block div{
+    font-size: 12px;
+    display: inline-block;
+    margin: 0 15px;
+}

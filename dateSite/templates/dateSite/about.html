@@ -1,0 +1,41 @@
+{% extends "./public_base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "About Us" %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid subpage">
+    <div class="container">
+        <div class="row">
+            <h1>About Us</h1>
+        </div>
+        <div class="row">
+            <h4>Our Story</h4>
+            <p>
+                Founded in 1993 by a Russian-American couple who met by chance, Meetlove is an innovative dating site built on the belief that love knows no boundaries.
+            </p>
+        </div>
+        <div class="row">
+            <h4>Our History</h4>
+            <p>
+                Meetlove was one of the first companies to develop a platform designed to connect people from around the world and it remains at the forefront of its field, continually developing improved communication technologies that allow people to discover and enjoy the possibilities of an exciting, globally-interconnected future. The site now has over 20 million members, more than 80 million visitors annually and 1.5 million+ messages exchanged daily.
+            </p>
+        </div>
+        <div class="row">
+            <h4>Our Team</h4>
+            <p>
+                Meetlove is proud to have an international team working in USA, Columbia, Russia, China, and Marocco with over 300 full-time employees. Meetlove’s long-standing reputation is a testament to the company’s ongoing pursuit of innovation, sustained dedication to member satisfaction, and unwavering commitment to its core values.
+            </p>
+        </div>
+        <div class="row">
+            <h4>Our Mission</h4>
+            <p>
+                Meetlove continually strives to develop innovative communication technologies that inspire global connections and facilitate modern love in the modern world.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

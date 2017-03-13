@@ -1,0 +1,31 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+<div class="row alert-header">
+    <div class="col-xs-2 col-sm-4">
+        <img src="{% static 'dateSite/img/icons/bell-icon.png' %}" class="icon"/>
+        <label class="title hidden-sm-down">ALERTS</label>
+    </div>
+    <div class="col-xs-10 col-sm-8"><div class="vr"></div></div>
+</div>
+{% if not verified or not notifications %}
+    <p class="no_alerts">No alerts to show</p>
+{% else %}
+    <div id="notifications">
+    {% for alert in notifications  %}
+        <div class="notification row">
+            <div class="col-xs-3 alert-pic-preview">
+                <img src="{{ alert.clicodesent.profile_picture }}"/>
+            </div>
+            <div class="col-xs-9 description">
+                @{{ alert.ntymessage }}
+                <span class="date">{{ alert.notdate }}</span>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="col-xs-12 see-all">
+        <a href="{% url 'dateSite:alerts' %}">See all</a>
+    </div>
+{% endif %}

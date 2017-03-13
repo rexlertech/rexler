@@ -1,0 +1,137 @@
+{% load static %} {% load sass_tags %} {% load crispy_forms_tags %}
+
+<!-- Modal to confirm to see the private albums -->
+<div id="privatepicModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h3>&#9888; Private picture</h3>
+            </div>
+            <div class="modal-body">
+                This is a private album. <br /> Do you want to see it?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnYes">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal to confirm to use the selected picture as profile -->
+<div id="profileModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to use this picture as your profile picture?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="profileYes">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal to show error for insuficient credits -->
+<div id="errorModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-error-msg"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for upload an album -->
+<div id="uploadAlbumModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h3>New Album</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="create-album" action="{% url 'dateSite:profile' slug=user.username %}" enctype="multipart/form-data">
+                    {% csrf_token %} {% crispy photoalbum_form %}
+                </form>
+                <form id="upload-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ upload_files_form }}
+                </form>
+                <hr>
+                {% include './upload_template.html' %}
+                <!---<form method="post" id="upload-form" action="{% url 'dateSite:profile' slug=user.username %}" enctype="multipart/form-data">
+                    {% csrf_token %} {% crispy photoalbum_form %}
+                    <input type="file" name="files" id="input-upload" multiple />
+                    <div class="error-msg" id="error-msg"></div>
+                    <div id="image_preview" class="row">
+                    </div>
+                </form>-->
+                <div class="error-msg" id="error-msg"></div>
+            </div>
+            <div class="modal-footer">
+                <div id="btn-create-album" class="btn btn-primary">Create Album</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal to confirm to delete the select album -->
+<div id="deletealbumModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h3>&#9888; Delete Album</h3>
+            </div>
+            <div class="modal-body">
+                Are you sure want to delete this album?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btndeleteYes">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal album errors messages -->
+<div id="messageModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="display-msg"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

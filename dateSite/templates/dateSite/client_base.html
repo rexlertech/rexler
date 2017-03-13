@@ -1,0 +1,90 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dating Site</title>
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static "dateSite/css/font-awesome.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/home.scss" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/menu.scss" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/chat.scss" %}">
+        {% block linkcss %}
+        {% endblock %}
+        <script type="text/javascript" src="{% static 'dateSite/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/tether.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/jquery.form.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/DjangoAjax.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/reconnecting-websocket.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/chat.js' %}"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-back">
+                <div class="navbar-header logo-img">
+                    <a href="{% url 'dateSite:main' %}">
+                        <div class="navbar-brand">
+                        </div>
+                    </a>
+                </div>
+                <button class="navbar-toggler hidden-md-up pull-xs-right btn-menu" data-toggle="collapse" data-target="#menu-items">
+                    <img src="{% static "dateSite/img/search-arrow-down.png" %}" alt="Menu">
+                </button>
+                <div id="menu-items" class="col-xs-12 collapse navbar-toggleable-sm">
+                    <div class="row pull-right">
+                        {% include "./navbar/menu.html" %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="subpage">
+            <section class="container-home row">
+                {% block contentinit %}
+                {% endblock %}
+                <div class="container membersContainer row" id="membersContainer">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                {% block contentend %}
+                {% endblock %}
+                {% if is_client %}
+                    <input id="sender" type="hidden" value="{{ client.clicode }}" />
+                    <input id="reciever" type="hidden" value="" />
+                    <div id="chatContainer" class="chatContainer hidden-sm-down">
+                    {% include 'dateSite/chat_list.html' %}
+                    </div>
+                {% endif %}
+            </section>
+        </div>
+
+        <div id="verifiedModal" class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            {% include "account/email_confirmation_modal.html" %}
+        </div>
+        <script type="text/javascript">
+            //Show email confirmation message if user hasn't your email verified
+            var credits, verify;
+            $(document).ready(function() {
+                var client = '{{ is_client }}'
+                var i_feel = '{{ feel }}'
+                credits = '{{ credits }}'
+                verify = '{{ verified }}'
+
+                if(client == 'True'){
+                    if(verify === 'False')
+                        $('#verifiedModal').modal('show');
+                }
+
+                $('#feel-icon').attr('src', i_feel);
+                $("#credits_billing").text(credits);
+            });
+        </script>
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

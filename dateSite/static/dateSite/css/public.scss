@@ -1,0 +1,406 @@
+@import "_definitions.scss";
+
+@include media-breakpoint-up(xs) {
+    html{
+        font-size: 15px;
+    }
+    .navbar{
+        background-color: $secondary-color;
+        border-radius: 0px;
+        width: 100%;
+        padding: 0.5rem 1rem 1rem;
+        .alert {
+            padding: 0.5rem 0 0;
+            margin-bottom: 0;
+            border: 1px solid transparent;
+            border-radius: 0;
+            font-size: 0.7rem;
+            ul, ol{
+                margin: 0;
+                padding: 0;
+                li { list-style: none; }
+            }
+        }
+    }
+    //Header
+    .navbar-brand{
+        background: url('../img/logo.png') no-repeat top left;
+        background-size: 5rem 3rem;
+        height: 3rem;
+        padding: 0px 0px 0px 5.3rem;
+        box-sizing: border-box;
+        margin-left: -15px;
+    }
+    .btn-padlock{
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        border-radius: 10px;
+        padding: 0px;
+        margin-right: -15px;
+        color: #FFF;
+        position: relative;
+        z-index: 1;
+        img{
+            width: 80%;
+            height: 60%;
+            margin: 14% 5% 10% 14%;
+        }
+        img{
+            width: 80%;
+            height: 74%;
+            margin: 10% 5% 10% 15%;
+        }
+    }
+    .clear-md-down{
+        clear: both;
+        font-size: 0.8rem;
+        .form-label{
+            line-height: 1.2rem;
+            padding: 0.4rem 0px 0.1rem 0px;
+            color: $font-third-color;
+        }
+        .form-group{
+            margin-bottom: 5px;
+        }
+        .form-actions{
+            line-height: 1.2rem;
+            padding: 0.4rem 0px 0.1rem 0px;
+        }
+        .form-options{
+            margin-bottom: 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .control-group, .forgot{
+                display: inline-block;
+                width: 50%;
+                line-height: 1.4rem;
+                padding: 0.6rem 0px 0.1rem 0px;
+                color: $font-third-color;
+                a{
+                    text-decoration: underline;
+                }
+            }
+        }
+        a:hover, a:active{
+            color: $font-secondary-color;
+        }
+    }
+    //Modal for Signup Form
+    #signupModal{
+        text-align: center;
+        .signup{
+            width: 100%;
+            margin: 0;
+            color: #444;
+            font-size: 0.8rem;
+            padding: 0 20px;
+            h1{ color: $font-secondary-color; }
+        }
+        .modal-header {
+            padding: 0;
+            border-bottom: none;
+        }
+        .modal-header .close {
+            margin-top: 0px;
+            margin-right: 10px;
+            z-index: 7;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            color: white;
+        }
+
+        label.control-label.requiredField{
+            display: none;
+        }
+        .control-group{
+            padding: 0;
+            .control-label{
+                text-align: center;
+            }
+        }
+        .control-group .controls {
+            margin: 10px auto;
+            width: 100%;
+        }
+        .controls-age {
+            width: 100%;
+        }
+        .btn-primary {
+            width: 60%;
+            margin: 5px;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+    }
+    footer{
+        width: 100%;
+        background-color: $primary-color;
+        color: $font-primary-color;
+        margin-top: 35px;
+        padding: 10px 0 0;
+        .row{
+            width: 100%;
+        }
+        ol{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            width: 100%;
+            li{
+                font-size: 0.8rem;
+                padding: 5px 0px;
+                width: 100%;
+                text-align: center;
+                a{
+                    color: $font-primary-color;
+                }
+            }
+        }
+        .copyrigth{
+            box-sizing: border-box;
+            background-color: $secondary-color;
+            span{
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-weight: normal;
+                font-size: 0.7rem;
+                color: $font-third-color;
+                a{
+                    text-decoration: underline;
+                }
+                a:hover, a:active{
+                    color: $font-secondary-color;
+                }
+            }
+        }
+    }
+    .bottom{
+        position: fixed;
+        bottom: 0;
+    }
+}
+@include media-breakpoint-up(sm) {
+    html{
+        font-size: 16px;
+    }
+    .navbar-brand{
+        background-size: 5rem 2.8rem;
+        height: 2.8rem;
+        padding: 0px 0px 0px 5.2rem;
+    }
+    .clear-md-down{
+        .form-group{
+            margin-bottom: 0px;
+        }
+        .control-group, .forgot{
+            display: block;
+            padding: 0rem 0px 0.1rem 0px;
+        }
+    }
+    footer{
+        .copyrigth{
+            text-align: center;
+            color: $font-third-color;
+            font-size: 1rem;
+            h4{
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(md) {
+    html{
+        font-size: 18px;
+    }
+    .navbar{
+        padding: 0.5rem 1rem;
+    }
+    .navbar-brand{
+        background-size: 4rem 2rem;
+        height: 3rem;
+        padding: 0px 0px 0px 4.3rem;
+        h1{
+            padding: 0.5rem 0px;
+            font-family: 'Dancing Script', cursive;
+            color: $font-secondary-color;
+            text-align: left;
+            font-size: 1.3rem;
+        }
+    }
+    .form-inline{
+        width: 100%;
+        .form-group{
+            width: 39%;
+            margin: 0px 1% 0px 0px;
+            font-size: 0.7rem;
+            line-height: 1.1rem;
+            .form-control{
+                width: 100%;
+                font-size: 0.7rem;
+                padding: 0.2rem;
+                box-sizing: border-box;
+            }
+            a{
+                color: $font-third-color;
+            }
+        }
+        .form-label{
+            width: 100%;
+            font-size: 0.6rem;
+            line-height: 0.6rem;
+        }
+        .form-actions{
+            width: 17%;
+            box-sizing: border-box;
+            margin: 0px;
+            display: inline-block;
+            .btn-login{
+                width: 100%;
+                font-size: 0.7rem;
+                padding: 0.2rem;
+                box-sizing: border-box;
+                margin: 0px;
+            }
+        }
+        .form-options{
+            .control-group, .forgot{
+                width: 39%;
+                margin: 0px 1% 0px 0px;
+                line-height: 1rem;
+                padding: 0rem 0px 0.1rem 0px;
+            }
+        }
+    }
+    footer{
+        margin-bottom: 0px;
+    }
+}
+@include media-breakpoint-up(lg) {
+    html{
+        font-size: 20px;
+    }
+    .navbar-brand{
+        background-size: 3.7rem 2.2rem;
+        background-position-y: 0.3rem;
+        height: 2.5rem;
+        padding: 0.3rem 0px 0px 4.2rem;
+        h1{
+            font-size: 1.2rem;
+        }
+    }
+    .form-inline{
+        width: 50%;
+        clear: none;
+        .form-group{
+            .control-group{
+                .form-control{
+                    font-size: 0.5rem;
+                }
+                .input-append{
+                    font-size: 0.6rem;
+                    color: $font-third-color;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+            }
+        }
+        .form-label{
+            padding: 0px;
+        }
+        .form-options{
+            .control-group, .forgot{
+                width: 41%;
+                margin: 0px;
+                font-size: 0.6rem;
+                line-height: 1.4rem;
+                vertical-align: middle;
+                padding: 0px;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(xl) {
+    html{
+        font-size: 20px;
+    }
+    .navbar-brand{
+        background-size: 4.2rem 2.2rem;
+        height: 3rem;
+        padding: 0px 0px 0px 5.6rem;
+        h1{
+            padding: 0.4rem 0px;
+            font-size: 1.5rem;
+        }
+    }
+}
+//Clases del header
+.subpage{
+    margin-top: 20px;
+    min-height: 100%;
+    height: auto !important;
+    h1{
+        color: $font-secondary-color;
+        width: 100%;
+    }
+    h4{
+        color: $font-third-color;
+        width: 100%;
+    }
+    p{
+        font-size: 0.8rem;
+        text-align: justify;
+    }
+    ul, ol{
+        li{
+            font-size: 0.8rem;
+        }
+    }
+    .info-container{
+        text-align: center;
+        margin-top: 50px;
+        h1,p { text-align: center; }
+        h2{
+            text-align: center;
+            color: $font-secondary-color;
+         }
+        a:hover{ color: $font-secondary-color; }
+        .unverified{
+            font-size: 0.8em;
+            font-style: italic;
+            color: $font-secondary-color;
+        }
+        .verified{
+            font-size: 0.8em;
+            font-style: italic;
+            color: #11ba00;
+        }
+        .form{ padding: 25px 0;}
+        form {
+            margin: 0 auto;
+        }
+        .text{
+            margin: 25px auto;
+            text-align: center;
+        }
+        .controls{ display: inline-block; }
+        .btn-xs{
+            width: 60%;
+            padding: 0.3rem;
+            float: right;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+    }
+}
+a:hover, a:active{
+    color: $font-third-color;
+}

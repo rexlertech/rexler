@@ -1,0 +1,51 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dating Site</title>
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static "dateSite/css/font-awesome.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/public.scss" %}">
+        <script type="text/javascript" src="{% static 'dateSite/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/tether.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/jquery.form.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/DjangoAjax.js' %}"></script>
+        {% block linkcss %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                {% if not user.is_authenticated %}
+                    <div id="secLogin" class="col-xs-12 collapse navbar-toggleable-md" role="search">
+                        <span></span>
+                        <div class="secLogin">
+                            <form class="form-inline pull-md-right clear-md-down" autocomplete="new-password" method="POST" action="{% url 'account_login' %}">
+                                <div class="form-label">
+                                    {% blocktrans %}
+                                    If you have not created an account yet, then please
+                                    {% endblocktrans %}
+                                    <a href="{% url 'account_signup' %}">sign up</a> first.
+                                </div>
+                                {% csrf_token %}
+                                {% crispy login_form %}
+                                {% if redirect_field_value %}
+                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

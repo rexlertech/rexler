@@ -1,0 +1,11 @@
+/dateSite/__pycache__
+/dateSite/templatetags/__pycache__
+/rexler/__pycache__
+/dateSite/migrations/__pycache__
+/dateSite/models/__pycache__
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

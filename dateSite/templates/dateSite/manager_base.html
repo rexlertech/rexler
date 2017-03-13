@@ -1,0 +1,67 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dating Site</title>
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static "dateSite/css/font-awesome.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/home_manager.scss" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/menu_manager.scss" %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src "dateSite/css/chat_manager.scss" %}">
+        {% block linkcss %}
+        {% endblock %}
+
+        <script type="text/javascript" src="{% static 'dateSite/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/tether.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/jquery.form.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dateSite/js/DjangoAjax.js' %}"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-back">
+                <div class="navbar-header logo-img">
+                    <a href="{% url 'dateSite:manager' %}">
+                        <div class="navbar-brand">
+                        </div>
+                    </a>
+                </div>
+                <div id="menu-items" class="col-xs-12 navbar-toggleable-sm">
+                    <div class="row pull-right">
+                        {% include "./navbar/menu_manager.html" %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="subpage">
+            <section class="container-home">
+                {% block content %}
+                {% endblock %}
+            </section>
+        </div>
+
+        <div id="verifiedModal" class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            {% include "account/email_confirmation_modal.html" %}
+        </div>
+        <script type="text/javascript">
+            //Show email confirmation message if user hasn't your email verified
+            $(document).ready(function() {
+                var client = '{{ is_client }}'
+                if(client == 'True'){
+                    var verify = '{{ verified }}'
+
+                    if(verify === 'False')
+                        $('#verifiedModal').modal('show');
+                }
+            });
+        </script>
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

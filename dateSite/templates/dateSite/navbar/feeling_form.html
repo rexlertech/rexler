@@ -1,0 +1,51 @@
+{% load static %}
+{% load sass_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+<div class="row feel-header">
+    <div class="col-xs-2 col-sm-4">
+        <img src="{% static 'dateSite/img/icons/heart-icon.png' %}" class="icon"/>
+        <label class="title hidden-sm-down">How I Feel</label>
+    </div>
+    <div class="col-xs-10 col-sm-8"><div class="vr"></div></div>
+</div>
+<form id="feeling" method="post">
+    {{ csrf_input }}
+    {% for feeling in feeling_choices  %}
+        <button type="submit" class="btn-feel col-xs-2" id="feel{{ feeling.feecode }}" value="{{ feeling.feecode }}">
+            <img src="{{ feeling.feeiconfile.url }}" />
+            {{ feeling.feedescription }}
+        </button>
+    {% endfor %}
+</form>
+
+<script>
+$("#feeling").submit(function(){return false;});
+$(".btn-feel").click(function() {
+    var feeling = this.value;
+    var sender = 0;
+    if ($("#sender").length > 0){
+        sender = $("#sender").val();
+    }
+    $.ajax({
+        type:'POST',
+        url:"{% url 'dateSite:change_feeling' %}",
+        data: {
+            'feeling': feeling,
+            'sender': sender,
+        },
+        dataType: "json",
+        success: function(data){
+            if(data.error != null){
+                $('#verifiedModal').modal('show');
+            }
+            else{
+                var img_path = '/static/dateSite/img/icons/feelings/' + data + '.png';
+                $('#feel-icon').attr('src', img_path);
+            }
+        }
+    });
+});
+</script>

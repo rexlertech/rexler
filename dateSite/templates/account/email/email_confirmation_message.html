@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+<body style="text-align: center; height:100%; background-color:#e8e6e6; font-family:verdana; line-height: 2em; padding: 15px;">
+    <br />
+    <br />
+    <img src="http://img09.deviantart.net/88d1/i/2012/122/4/9/corazon_de_light_png_by_ginaeditions-d4ya44d.png" style="width:25%; margin:0 auto;"/>
+    <h1>Congratulations, {{ user }}!</h1>
+    <p>Now you can start meeting {{ gender_preference }} from now on.</p>
+    <br />
+    <p>Confirm that {{ email }} is your email account and connect daily with {{ gender_preference }} compatible with you plus many more benefits.</p>
+    <br />
+    <p>Verify your email account now</p>
+    <br />
+    <a href="{{ activate_url }}" style="text-decoration:none;">
+        <button style="border-radius: 5px; padding: 15px 25px; background-color:#8d26db; border: 1px solid #8d26db; font-size: 2em; color: #FFF; margin-bottom:25px;">
+            CONFIRM
+        </button>
+    </a>
+    <br />
+    <div style="font-size: 10px;">
+        Please ignore this message if you have not registered on our site or if you have already confirmed your email. You have chosen to receive this newsletter when you registred on {{ site }}
+    </div>
+    <br />
+</body>
+</html>

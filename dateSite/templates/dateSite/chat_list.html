@@ -1,0 +1,163 @@
+{% load static %}
+<div id="chat-box" class="chatForm">
+    <div class="chat-header">
+        <div class="picturechat">
+            <div class="chat-img-container">
+                <img class="chat-image" src="{{ mychats.0.profile_picture }}" />
+                <img class="chat-fell" src="{% static 'dateSite/img/icons/feelings/1.png' %}" />
+            </div>
+        </div>
+        <div class="identitychat">
+            <span class="chat-name">Karina, 24</span>
+            <span class="chat-nickname">boonita@24</span>
+            <span class="chat-city">Monterrey, MK</span>
+        </div>
+        <div class="closechat btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" id="leave" href="#">Leave this conversation</a>
+              <a class="dropdown-item" id="closechat" href="#">Close window</a>
+            </div>
+        </div>
+    </div>
+    <div class="chat-content">
+        <div id="chat-messages" class="chat-messages">
+        </div>
+        <div class="emoticones">
+            <ul class="the_emojins">
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_1.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_2.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_3.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_4.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_5.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_6.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_7.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_8.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_9.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_10.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_11.png' %}" alt="Emoticon"></li>
+                <li><img class="img_emoticon" src="{% static 'dateSite/img/emojins/emojin_12.png' %}" alt="Emoticon"></li>
+            </ul>
+            <ul class="the_stickers">
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_1.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_2.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_3.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_4.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_5.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_6.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_7.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_8.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_9.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_10.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_11.gif' %}" alt="Emoticon"></li>
+                <li><img class="img_sticker" src="{% static 'dateSite/img/stickers/sticker_12.gif' %}" alt="Emoticon"></li>
+            </ul>
+            <div class="price">Sending sticker is billed at {{ credit_sticker }} credits</div>
+        </div>
+    </div>
+    <div class="chat-box-form">
+        <div class="chat-actions">
+            <ul class="list-actions">
+                <li id="chat" class="action-chat">
+                    <img src="{% static 'dateSite/img/action-chat.png' %}"
+                    alt="You are chatting" />
+                </li>
+                <li id="emojin" class="action-emojin">
+                    <img src="{% static 'dateSite/img/emojin-chat.png' %}"
+                    alt="Send a emojin" />
+                </li>
+                <li id="sticker" class="action-sticker">
+                    <img src="{% static 'dateSite/img/stickers-chat.png' %}"
+                    alt="Send a sticker" />
+                </li>
+            </ul>
+        </div>
+        <form class="chat-form" id="chatform">
+            {% csrf_token %}
+            <div id="message" class="input-message" contenteditable="true"></div>
+            <input id="send-message" class="input-button" type="button" value="SEND" />
+        </form>
+        <p class="quantity-characters">Quedan <span id="caracteres">160</span> caracteres</p>
+    </div>
+    <div class="chat-footer">Chat is billed at {{ credit_chat }} Credit per minute.</div>
+</div>
+<div id="chat-list" class="chatList">
+    <h2 class="title-chat title-mychats">MY CHATS</h2>
+    <div class="chat-mychat">
+        <ul class="clientsmychat clientchatlist">
+        {% for cli in mychats %}
+            {% if client.clicode != cli.sentcode %}
+                <li id="client_{{ cli.sentcode }}">
+                    <div class="block-identity">
+                        <div class="chat-img-container">
+                            <img class="itemimage" src="{{ cli.sentprofilepicture }}" alt="{{ cli.sentname }}">
+                        </div>
+                        {% if cli.msg_qty <= 9 %}
+                        <div class="itemquantity">{{ cli.msg_qty }}</div>
+                        {% else %}
+                        <div class="itemquantity">+9</div>
+                        {% endif %}
+                    </div>
+                    <div class="block-message">
+                        {% if cli.sentage > 0 %}
+                        <span class="itemname">@{{ cli.sentusername }}, {{ cli.sentage }}</span>
+                        {% else %}
+                        <span class="itemname">+{{ cli.sentusername }}</span>
+                        {% endif %}
+                        <p class="itemmessage">{{ cli.mescontent | safe }}</p>
+                    </div>
+                </li>
+            {% else %}
+                <li id="client_{{ cli.recievedcode }}">
+                    <div class="block-identity">
+                        <div class="chat-img-container">
+                            <img class="itemimage" src="{{ cli.recievedprofilepicture }}" alt="{{ cli.recievedusername }}">
+                        </div>
+                        {% if cli.msg_qty <= 9 %}
+                        <div class="itemquantity">{{ cli.msg_qty }}</div>
+                        {% else %}
+                        <div class="itemquantity">+9</div>
+                        {% endif %}
+                    </div>
+                    <div class="block-message">
+                        {% if cli.recievedage > 0 %}
+                        <span class="itemname">@{{ cli.recievedusername }}, {{ cli.recievedage }}</span>
+                        {% else %}
+                        <span class="itemname">@{{ cli.recievedusername }}</span>
+                        {% endif %}
+                        <p class="itemmessage">{{ cli.mescontent | safe }}</p>
+                    </div>
+                </li>
+            {% endif %}
+        {% empty %}
+            <li class="notchatlist">&nbsp;</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <h2 class="title-chat title-myrequest">CHAT REQUEST</h2>
+    <div class="chat-myrequest">
+        <ul class="clientsrequest clientchatlist">
+            {% for cli in myrequest %}
+            <li id="client_{{ cli.sentcode }}">
+                <div class="block-identity">
+                    <div class="chat-img-container">
+                        <img class="itemimage" src="{{ cli.sentprofilepicture }}" alt="{{ cli.sentusername }}">
+                    </div>
+                    <div class="itemquantity">{{ cli.msg_qty }}</div>
+                </div>
+                <div class="block-message">
+                    {% if cli.sentage > 0 %}
+                    <span class="itemname">@{{ cli.sentusername }}, {{ cli.sentage }}</span>
+                    {% else %}
+                    <span class="itemname">@{{ cli.sentusername }}</span>
+                    {% endif %}
+                    <p class="itemmessage">{{ cli.mescontent | safe }}</p>
+                </div>
+            </li>
+            {% empty %}
+            <li class="notchatlist">&nbsp;</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

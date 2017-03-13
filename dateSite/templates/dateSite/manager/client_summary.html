@@ -1,0 +1,22 @@
+{% load static %}
+{% load sass_tags %}
+
+<img src="{{ client.clipicture }}" class="profile-picture"/>
+<div class="client_summary">
+    <p class="sum_title">
+        {% if client.cliage == 0 %}
+        @{{ client.cliusername }}
+        {% else %}
+        @{{ client.cliusername }}, {{ client.cliage }}
+        {% endif %}
+    </p>
+    {% if client.cliname %}
+    <p class="sum_title">{{ client.cliname }}</p>
+    {% endif %}
+    {% if client.clicity %}
+        <p class="sum_title">{{ client.clicity }}</p>
+    {% endif %}
+    {% if client.clidescription %}
+    <p class="sum_text"><span class="sum_title">About me</span> &nbsp;{{ client.clidescription }}</p>
+    {% endif %}
+</div>
