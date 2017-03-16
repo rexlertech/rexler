@@ -106,31 +106,19 @@ WSGI_APPLICATION = 'rexler.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-if 'RDS_DB_NAME' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rexler',#ebdb
+        'USER': 'siteadmin',
+        'PASSWORD': '@dm!n',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c search_path=rexler'
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'rexler',#ebdb
-            'USER': 'siteadmin',
-            'PASSWORD': '@dm!n',
-            'HOST': 'localhost',
-            'PORT': '5432',
-            'OPTIONS': {
-                'options': '-c search_path=rexler'
-            }
-        }
-    }
+}
 
 
 # Password validation
